@@ -45,7 +45,7 @@ const Portfolio = () => {
       category: "UI/UX Design",
       image: "🎮",
       features: ["Smooth Animations", "Enhanced UX", "Score Tracking"],
-      link: "https://rock-paper-scissors-six-red.vercel.app"
+      link: "https://rock-paper-scissors-iota-green.vercel.app"
     }
   ];
 
