@@ -10,7 +10,7 @@ const Portfolio = () => {
       tech: ["React.js", "JavaScript", "CSS3", "Local Storage"],
       category: "Web Development",
       image: "🎓",
-      features: ["Interactive Quizzes", "Progress Tracking", "Responsive Design"]
+      features: ["Interactive Quizzes", "Progress Tracking", "Responsive Design"],
       link: "https://interactive-learning-platform-nu.vercel.app"
     },
     {
@@ -35,7 +35,7 @@ const Portfolio = () => {
       tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
       category: "UI Development",
       image: "🎬",
-      features: ["Responsive Layout", "Modern CSS", "Interactive Elements"]
+      features: ["Responsive Layout", "Modern CSS", "Interactive Elements"],
       link: "https://netflix-clone-beta-snowy-67.vercel.app"
     },
     {
@@ -44,7 +44,7 @@ const Portfolio = () => {
       tech: ["JavaScript", "CSS3", "HTML5", "Animations"],
       category: "UI/UX Design",
       image: "🎮",
-      features: ["Smooth Animations", "Enhanced UX", "Score Tracking"]
+      features: ["Smooth Animations", "Enhanced UX", "Score Tracking"],
       link: "https://rock-paper-scissors-six-red.vercel.app"
     }
   ];
