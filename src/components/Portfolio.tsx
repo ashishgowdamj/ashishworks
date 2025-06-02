@@ -11,6 +11,7 @@ const Portfolio = () => {
       category: "Web Development",
       image: "🎓",
       features: ["Interactive Quizzes", "Progress Tracking", "Responsive Design"]
+      link: "https://interactive-learning-platform-nu.vercel.app"
     },
     {
       title: "Book Reading Tracker",
@@ -35,6 +36,7 @@ const Portfolio = () => {
       category: "UI Development",
       image: "🎬",
       features: ["Responsive Layout", "Modern CSS", "Interactive Elements"]
+      link: "https://netflix-clone-beta-snowy-67.vercel.app"
     },
     {
       title: "Rock Paper Scissors Game",
@@ -43,6 +45,7 @@ const Portfolio = () => {
       category: "UI/UX Design",
       image: "🎮",
       features: ["Smooth Animations", "Enhanced UX", "Score Tracking"]
+      link: "https://rock-paper-scissors-six-red.vercel.app"
     }
   ];
 
