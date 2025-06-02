@@ -111,8 +111,12 @@ const Hero = () => {
               {/* Main Profile Ring */}
               <div className="relative w-full h-full rounded-full bg-gradient-to-br from-red-500 via-pink-600 to-purple-700 p-1">
                 <div className="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden border-4 border-gray-900/50">
-                  <div className="w-full h-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 rounded-full flex items-center justify-center relative">
-                    <span className="text-6xl lg:text-8xl font-bold bg-gradient-to-br from-white to-gray-300 bg-clip-text text-transparent">AG</span>
+                  <div className="w-full h-full bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 rounded-full flex items-center justify-center relative overflow-hidden">
+                    <img 
+                      src="https://i.postimg.cc/YCv0fWMK/Passport-size.jpg" 
+                      alt="Ashish Gowda M J" 
+                      className="w-full h-full object-cover rounded-full"
+                    />
                     
                     {/* Inner decorative elements */}
                     <div className="absolute inset-0 rounded-full bg-gradient-to-br from-red-500/10 to-transparent"></div>
