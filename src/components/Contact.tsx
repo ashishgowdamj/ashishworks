@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Github, Linkedin, ArrowRight } from 'lucide-react';
 import emailjs from '@emailjs/browser';
@@ -23,36 +22,61 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      toast({
+        title: "Validation Error",
+        description: "Please fill in all fields before sending.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
+    console.log('Starting email send process...');
+    console.log('Form data:', formData);
 
     try {
+      // Initialize EmailJS (this ensures the service is properly loaded)
+      emailjs.init('E_kgP-DvuuIWrqJou');
+      
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_name: 'Ashish', // Your name
+        to_name: 'Ashish',
+        reply_to: formData.email,
       };
 
-      await emailjs.send(
+      console.log('Sending email with params:', templateParams);
+
+      const result = await emailjs.send(
         'service_96qciat', // Service ID
         'template_z1plkd3', // Template ID
         templateParams,
         'E_kgP-DvuuIWrqJou' // Public Key
       );
 
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
+      console.log('EmailJS result:', result);
 
-      // Reset form
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      if (result.status === 200) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+
+        // Reset form
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(`EmailJS returned status: ${result.status}`);
+      }
     } catch (error) {
-      console.error('EmailJS error:', error);
+      console.error('EmailJS error details:', error);
       toast({
         title: "Failed to send message",
-        description: "Please try again later or contact me directly via email.",
+        description: "There was an error sending your message. Please try again or contact me directly via email.",
         variant: "destructive",
       });
     } finally {

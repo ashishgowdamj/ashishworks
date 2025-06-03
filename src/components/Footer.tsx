@@ -60,13 +60,6 @@ const Footer = () => {
             </p>
           </div>
         </div>
-
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-          <p className="text-gray-500 text-sm">
-            Designed and developed with ❤️ using React, TypeScript, and Tailwind CSS
-          </p>
-        </div>
       </div>
     </footer>
   );
