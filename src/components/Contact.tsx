@@ -38,7 +38,7 @@ const Contact = () => {
     console.log('Form data:', formData);
 
     try {
-      // Initialize EmailJS (this ensures the service is properly loaded)
+      // Initialize EmailJS with updated public key
       emailjs.init('E_kgP-DvuuIWrqJou');
       
       const templateParams = {
@@ -53,10 +53,10 @@ const Contact = () => {
       console.log('Sending email with params:', templateParams);
 
       const result = await emailjs.send(
-        'service_96qciat', // Service ID
-        'template_z1plkd3', // Template ID
+        'service_drbacts', // Updated Service ID
+        'template_bjeq1dx', // Updated Template ID
         templateParams,
-        'E_kgP-DvuuIWrqJou' // Public Key
+        'E_kgP-DvuuuIWrqJou' // Updated Public Key
       );
 
       console.log('EmailJS result:', result);
