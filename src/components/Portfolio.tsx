@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Github } from 'lucide-react';
 
@@ -10,15 +11,16 @@ const Portfolio = () => {
       category: "Web Development",
       image: "🎓",
       features: ["Interactive Quizzes", "Progress Tracking", "Responsive Design"],
-      link: "https://interactive-learning-platform-nu.vercel.app"
+      link: "https://interactive-learning-platform-nu.vercel.app/"
     },
     {
-      title: "Book Reading Tracker",
-      description: "Full-stack web application built with Flask and SQLite for managing personal reading habits, tracking progress, and organizing book collections.",
-      tech: ["Flask", "SQLite", "Python", "HTML/CSS"],
-      category: "Full Stack",
-      image: "📚",
-      features: ["Reading Progress", "Book Management", "Statistics Dashboard"]
+      title: "Travel App Design",
+      description: "Modern travel application UI/UX design created in Figma, featuring intuitive navigation, beautiful visuals, and comprehensive travel planning features.",
+      tech: ["Figma", "UI/UX Design", "Prototyping", "Mobile Design"],
+      category: "UI/UX Design",
+      image: "✈️",
+      features: ["Modern UI", "Travel Planning", "Mobile-First Design"],
+      link: "https://www.figma.com/design/ObzfpjbvxVphl9vPVGiO1O/Travel-App?node-id=0-1&t=1rXRhTZP9NvcYyTq-1"
     },
     {
       title: "GPS Simulator App",
@@ -38,6 +40,15 @@ const Portfolio = () => {
       link: "https://netflix-clone-beta-snowy-67.vercel.app"
     },
     {
+      title: "Facebook Clone",
+      description: "Social media platform clone with modern design, user interactions, and responsive layout mimicking Facebook's core features.",
+      tech: ["React.js", "CSS3", "JavaScript", "Responsive Design"],
+      category: "Web Development",
+      image: "📘",
+      features: ["Social Interface", "Modern Design", "User Interactions"],
+      link: "https://face-book-clone-zzpx.vercel.app"
+    },
+    {
       title: "Rock Paper Scissors Game",
       description: "Enhanced user interface for the classic game with improved engagement, smooth animations, and intuitive user experience design.",
       tech: ["JavaScript", "CSS3", "HTML5", "Animations"],
@@ -47,6 +58,16 @@ const Portfolio = () => {
       link: "https://rock-paper-scissors-iota-green.vercel.app"
     }
   ];
+
+  const handleProjectClick = (link?: string) => {
+    if (link) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleLinkedInClick = () => {
+    window.open('https://www.linkedin.com/in/ashishgowdamj', '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <section id="portfolio" className="py-20 bg-gray-900">
@@ -114,11 +135,22 @@ const Portfolio = () => {
 
                 {/* Project Links */}
                 <div className="flex gap-4">
-                  <button className="flex-1 bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center justify-center gap-2">
-                    <span>View Project</span>
-                    <ArrowRight className="w-4 h-4" />
+                  <button 
+                    onClick={() => handleProjectClick(project.link)}
+                    disabled={!project.link}
+                    className={`flex-1 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 ${
+                      project.link 
+                        ? 'bg-red-500 text-white hover:bg-red-600 cursor-pointer' 
+                        : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                    }`}
+                  >
+                    <span>{project.link ? 'View Project' : 'Coming Soon'}</span>
+                    {project.link && <ArrowRight className="w-4 h-4" />}
                   </button>
-                  <button className="bg-gray-700 text-white p-3 rounded-lg hover:bg-gray-600 transition-colors duration-200">
+                  <button 
+                    onClick={handleLinkedInClick}
+                    className="bg-gray-700 text-white p-3 rounded-lg hover:bg-gray-600 transition-colors duration-200"
+                  >
                     <Github className="w-5 h-5" />
                   </button>
                 </div>
