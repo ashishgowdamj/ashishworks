@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Github } from 'lucide-react';
 
@@ -22,7 +21,7 @@ const Portfolio = () => {
       features: ["Reading Progress", "Book Management", "Statistics Dashboard"]
     },
     {
-      title: "GPS Tracker App",
+      title: "GPS Simulator App",
       description: "Native Android application with advanced GPS functionality, location spoofing capabilities, and real-time location sharing features.",
       tech: ["Android Studio", "Java", "GPS API", "SQLite"],
       category: "Mobile Development",
