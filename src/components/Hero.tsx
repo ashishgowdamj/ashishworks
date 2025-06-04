@@ -10,6 +10,46 @@ const Hero = () => {
     }
   };
 
+  const handleDownloadCV = () => {
+    // For now, we'll create a simple text file as a placeholder
+    // In a real scenario, you would have an actual PDF resume file
+    const resumeContent = `
+ASHISH GOWDA M J
+UI/UX Designer & Front-End Developer
+
+Contact:
+Email: ashishgowdamj@gmail.com
+Phone: +91 6362032496
+Location: Karnataka, India
+LinkedIn: https://linkedin.com/in/ashishgowdamj
+GitHub: https://github.com/ashishgowdamj
+
+Education:
+BCA - RNS First Grade College (Currently pursuing)
+
+Skills:
+- UI/UX Design
+- React.js Development
+- Front-End Development
+- Modern CSS & JavaScript
+- Responsive Web Design
+- Figma & Design Tools
+
+Experience:
+Passionate about creating exceptional digital experiences with user-centered design and modern development practices.
+    `.trim();
+
+    const blob = new Blob([resumeContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Ashish_Gowda_Resume.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
       {/* Enhanced Background Elements */}
@@ -73,7 +113,11 @@ const Hero = () => {
                 <span>Get In Touch</span>
               </button>
               
-              <button className="border border-gray-600/50 text-white px-4 py-4 rounded-xl hover:border-red-500/50 hover:bg-red-500/10 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
+              <button 
+                onClick={handleDownloadCV}
+                className="border border-gray-600/50 text-white px-4 py-4 rounded-xl hover:border-red-500/50 hover:bg-red-500/10 transition-all duration-300 flex items-center justify-center backdrop-blur-sm hover:scale-105"
+                title="Download Resume"
+              >
                 <Download className="w-5 h-5" />
               </button>
             </div>
