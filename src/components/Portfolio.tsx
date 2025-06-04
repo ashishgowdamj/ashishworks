@@ -69,6 +69,16 @@ const Portfolio = () => {
     window.open('https://www.linkedin.com/in/ashishgowdamj', '_blank', 'noopener,noreferrer');
   };
 
+  const handleStartProjectClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section id="portfolio" className="py-20 bg-gray-900">
       <div className="container mx-auto px-6">
@@ -166,7 +176,10 @@ const Portfolio = () => {
             <p className="text-gray-300 mb-6">
               I'm always excited to take on new challenges and create amazing digital experiences.
             </p>
-            <button className="bg-red-500 text-white px-8 py-4 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-2 mx-auto">
+            <button 
+              onClick={handleStartProjectClick}
+              className="bg-red-500 text-white px-8 py-4 rounded-lg hover:bg-red-600 transition-all duration-200 flex items-center gap-2 mx-auto hover:scale-105 transform shadow-lg hover:shadow-xl"
+            >
               Start a Project
               <ArrowRight className="w-5 h-5" />
             </button>

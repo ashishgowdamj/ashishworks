@@ -41,6 +41,16 @@ const Services = () => {
     }
   ];
 
+  const handleGetStartedClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section id="services" className="py-20 bg-gray-800">
       <div className="container mx-auto px-6">
@@ -75,7 +85,10 @@ const Services = () => {
               </div>
 
               <div className="mt-8 pt-6 border-t border-gray-700">
-                <button className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors duration-200 font-semibold">
+                <button 
+                  onClick={handleGetStartedClick}
+                  className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-all duration-200 font-semibold hover:scale-105 transform shadow-lg hover:shadow-xl"
+                >
                   Get Started
                 </button>
               </div>
