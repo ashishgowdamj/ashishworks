@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Code, Palette, Globe, Smartphone, Database, GitBranch, Figma, Zap } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
@@ -38,56 +39,127 @@ const Skills = () => {
     }
   ];
 
+  const tools = [
+    { name: "Figma", icon: <Figma className="w-8 h-8" />, color: "from-purple-500 to-pink-500" },
+    { name: "HTML5", icon: <Code className="w-8 h-8" />, color: "from-orange-500 to-red-500" },
+    { name: "CSS3", icon: <Palette className="w-8 h-8" />, color: "from-blue-500 to-cyan-500" },
+    { name: "JavaScript", icon: <Zap className="w-8 h-8" />, color: "from-yellow-500 to-orange-500" },
+    { name: "React", icon: <Globe className="w-8 h-8" />, color: "from-cyan-500 to-blue-500" },
+    { name: "Git", icon: <GitBranch className="w-8 h-8" />, color: "from-red-500 to-pink-500" },
+    { name: "VSCode", icon: <Code className="w-8 h-8" />, color: "from-blue-600 to-purple-600" },
+    { name: "Flask", icon: <Database className="w-8 h-8" />, color: "from-green-500 to-teal-500" },
+    { name: "SQLite", icon: <Database className="w-8 h-8" />, color: "from-gray-500 to-gray-700" },
+    { name: "Android Studio", icon: <Smartphone className="w-8 h-8" />, color: "from-green-400 to-blue-500" },
+    { name: "Chrome DevTools", icon: <Globe className="w-8 h-8" />, color: "from-red-500 to-yellow-500" },
+    { name: "Responsive Design", icon: <Smartphone className="w-8 h-8" />, color: "from-purple-500 to-indigo-500" }
+  ];
+
   return (
-    <section id="skills" className="py-20 bg-gray-900">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Skills & Expertise</h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills and design capabilities, 
-            constantly evolving through continuous learning and practical application.
-          </p>
+    <section id="skills" className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-40 left-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-40 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20">
+          <div className="animate-fade-in">
+            <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
+              Skills & 
+              <span className="bg-gradient-to-r from-red-400 to-pink-500 bg-clip-text text-transparent"> Expertise</span>
+            </h2>
+          </div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-gray-400 text-xl max-w-4xl mx-auto leading-relaxed">
+              A comprehensive toolkit of technical skills and design capabilities, 
+              constantly evolving through hands-on projects and continuous learning.
+            </p>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* Skills Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-20">
           {skillCategories.map((category, index) => (
-            <div key={index} className="bg-gray-800 p-8 rounded-2xl hover:bg-gray-750 transition-colors duration-300">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">{category.title}</h3>
-              <div className="space-y-6">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-red-500 font-semibold">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-red-500 to-pink-500 h-2 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+            <div key={index} className="group animate-fade-in" style={{ animationDelay: `${0.1 * index}s` }}>
+              <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-xl p-8 rounded-3xl border border-gray-700/30 hover:border-red-500/30 transition-all duration-500 hover:transform hover:scale-105 relative overflow-hidden">
+                {/* Hover Glow */}
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-white mb-8 text-center group-hover:text-red-400 transition-colors duration-300">
+                    {category.title}
+                  </h3>
+                  <div className="space-y-6">
+                    {category.skills.map((skill, skillIndex) => (
+                      <div key={skillIndex} className="space-y-3">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-300 font-semibold text-lg">{skill.name}</span>
+                          <span className="text-red-400 font-bold text-lg">{skill.level}%</span>
+                        </div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
+                          <div
+                            className="bg-gradient-to-r from-red-500 via-pink-500 to-red-600 h-3 rounded-full transition-all duration-1000 ease-out relative overflow-hidden"
+                            style={{ width: `${skill.level}%` }}
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent transform -skew-x-12 animate-pulse"></div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Tools & Technologies */}
-        <div className="mt-16">
-          <h3 className="text-3xl font-bold text-white text-center mb-12">Tools & Technologies</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {[
-              "Figma", "HTML5", "CSS3", "JavaScript", "React", "Git",
-              "VSCode", "Flask", "SQLite", "Android Studio", "Chrome DevTools", "Responsive Design"
-            ].map((tool, index) => (
+        {/* Enhanced Tools & Technologies */}
+        <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          <h3 className="text-4xl font-bold text-white text-center mb-16">
+            Tools & 
+            <span className="bg-gradient-to-r from-red-400 to-pink-500 bg-clip-text text-transparent"> Technologies</span>
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+            {tools.map((tool, index) => (
               <div
                 key={index}
-                className="bg-gray-800 p-4 rounded-xl text-center hover:bg-gray-700 hover:scale-105 transition-all duration-200"
+                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl p-6 rounded-2xl text-center hover:scale-110 transition-all duration-500 border border-gray-700/30 hover:border-red-500/30 cursor-pointer animate-fade-in"
+                style={{ animationDelay: `${0.05 * index}s` }}
               >
-                <span className="text-gray-300 font-medium">{tool}</span>
+                {/* Animated Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
+                
+                {/* Icon Container */}
+                <div className={`w-16 h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <div className="text-white group-hover:scale-110 transition-transform duration-300">
+                    {tool.icon}
+                  </div>
+                </div>
+                
+                <span className="text-gray-300 font-semibold text-sm group-hover:text-white transition-colors duration-300">
+                  {tool.name}
+                </span>
+                
+                {/* Hover Glow Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl -z-10`}></div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Experience Highlight */}
+        <div className="mt-20 text-center animate-fade-in" style={{ animationDelay: '0.7s' }}>
+          <div className="bg-gradient-to-r from-red-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-xl rounded-3xl p-12 border border-gray-700/30 max-w-4xl mx-auto">
+            <h4 className="text-3xl font-bold text-white mb-6">
+              Passionate About 
+              <span className="bg-gradient-to-r from-red-400 to-pink-500 bg-clip-text text-transparent"> Innovation</span>
+            </h4>
+            <p className="text-gray-300 text-xl leading-relaxed">
+              Every project is an opportunity to push boundaries, learn new technologies, 
+              and create solutions that make a real difference in users' lives.
+            </p>
           </div>
         </div>
       </div>
