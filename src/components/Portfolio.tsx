@@ -1,9 +1,17 @@
-
 import React from 'react';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
 
 const Portfolio = () => {
   const projects = [
+    {
+      title: "Dhanvith Ventures",
+      description: "Professional business website built with Wix, featuring modern design, business services showcase, and client engagement features.",
+      tech: ["Wix", "Web Design", "Business Website", "Responsive Design"],
+      category: "Web Development",
+      image: "🏢",
+      features: ["Business Showcase", "Professional Design", "Client Engagement"],
+      link: "https://www.dhanvith-ventures.com"
+    },
     {
       title: "Interactive Learning Platform",
       description: "A comprehensive React.js web application featuring interactive quizzes, progress tracking, and personalized learning paths.",
