@@ -80,98 +80,148 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-16 bg-gray-900">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">My Portfolio</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A showcase of my recent projects demonstrating skills in UI/UX design, 
-            front-end development, and full-stack applications.
-          </p>
+    <section id="portfolio" className="py-16 bg-gray-900 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Enhanced Header with Staggered Animation */}
+        <div className="text-center mb-12 space-y-4">
+          <div className="animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+              My Portfolio
+            </h2>
+          </div>
+          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              A showcase of my recent projects demonstrating skills in UI/UX design, 
+              front-end development, and full-stack applications.
+            </p>
+          </div>
         </div>
 
+        {/* Enhanced Grid with Staggered Card Animations */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-gray-800 rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300 group"
+              className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/30 hover:border-red-500/30 transition-all duration-500 animate-fade-in"
+              style={{ animationDelay: `${0.1 * index}s` }}
             >
-              {/* Project Image/Icon */}
-              <div className="bg-gradient-to-br from-red-500 to-pink-600 h-32 flex items-center justify-center">
-                <span className="text-5xl">{project.image}</span>
+              {/* Hover Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Project Image/Icon with Enhanced Animation */}
+              <div className="relative bg-gradient-to-br from-red-500 to-pink-600 h-28 flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
+                <span className="text-4xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">{project.image}</span>
               </div>
 
-              {/* Project Content */}
-              <div className="p-6">
+              {/* Project Content with Enhanced Spacing */}
+              <div className="p-5 relative">
+                {/* Category Badge with Animation */}
                 <div className="mb-3">
-                  <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                  <span className="inline-block bg-red-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium transform group-hover:scale-105 transition-transform duration-200">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3">{project.title}</h3>
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed line-clamp-3">{project.description}</p>
+                {/* Title with Hover Effect */}
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors duration-300">
+                  {project.title}
+                </h3>
+                
+                {/* Description with Line Clamp */}
+                <p className="text-gray-300 mb-3 text-sm leading-relaxed line-clamp-2 group-hover:text-gray-200 transition-colors duration-300">
+                  {project.description}
+                </p>
 
-                {/* Technologies */}
+                {/* Technologies with Enhanced Styling */}
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-1">
                     {project.tech.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="bg-gray-900 text-red-400 px-2 py-1 rounded text-xs border border-gray-700"
+                        className="bg-gray-900/50 backdrop-blur-sm text-red-400 px-2 py-1 rounded text-xs border border-gray-700/50 hover:border-red-500/50 transition-colors duration-200"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="text-gray-500 text-xs px-2 py-1">
+                      <span className="text-gray-500 text-xs px-2 py-1 opacity-70">
                         +{project.tech.length - 3} more
                       </span>
                     )}
                   </div>
                 </div>
 
-                {/* Project Links */}
+                {/* Enhanced Action Buttons */}
                 <div className="flex gap-2">
                   <button 
                     onClick={() => handleProjectClick(project.link)}
                     disabled={!project.link}
-                    className={`flex-1 py-2 px-3 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 text-sm ${
+                    className={`group/btn flex-1 py-2 px-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm relative overflow-hidden ${
                       project.link 
-                        ? 'bg-red-500 text-white hover:bg-red-600 cursor-pointer' 
-                        : 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                        ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white hover:from-red-600 hover:to-pink-700 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25 cursor-pointer' 
+                        : 'bg-gray-600/50 text-gray-400 cursor-not-allowed'
                     }`}
                   >
-                    <ExternalLink className="w-3 h-3" />
-                    <span>{project.link ? 'View' : 'Soon'}</span>
+                    {project.link && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/btn:translate-x-[200%] transition-transform duration-700"></div>
+                    )}
+                    <ExternalLink className={`w-3 h-3 ${project.link ? 'group-hover/btn:rotate-12' : ''} transition-transform duration-200`} />
+                    <span className="relative z-10">{project.link ? 'View' : 'Soon'}</span>
                   </button>
+                  
                   <button 
                     onClick={handleLinkedInClick}
-                    className="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors duration-200"
+                    className="group/github bg-gray-700/50 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-red-500/80 hover:scale-110 transition-all duration-300 relative overflow-hidden border border-gray-600/30 hover:border-red-500/50"
                     title="View on GitHub"
                   >
-                    <Github className="w-4 h-4" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-transparent opacity-0 group-hover/github:opacity-100 transition-opacity duration-300"></div>
+                    <Github className="w-4 h-4 relative z-10 group-hover/github:rotate-12 transition-transform duration-200" />
                   </button>
                 </div>
               </div>
+
+              {/* Animated Border Effect */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-sm"></div>
             </div>
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-          <div className="bg-gray-800 p-6 rounded-xl max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold text-white mb-3">Interested in Working Together?</h3>
-            <p className="text-gray-300 mb-4 text-sm">
-              I'm always excited to take on new challenges and create amazing digital experiences.
-            </p>
-            <button 
-              onClick={handleStartProjectClick}
-              className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-all duration-200 flex items-center gap-2 mx-auto hover:scale-105 transform shadow-lg hover:shadow-xl"
-            >
-              Start a Project
-              <ArrowRight className="w-4 h-4" />
-            </button>
+        {/* Enhanced Call to Action */}
+        <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto border border-gray-700/30 group hover:border-red-500/30 transition-all duration-500">
+            {/* Animated Background Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <div className="relative z-10 space-y-4">
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors duration-300">
+                Interested in Working Together?
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
+                I'm always excited to take on new challenges and create amazing digital experiences.
+              </p>
+              
+              <button 
+                onClick={handleStartProjectClick}
+                className="group/cta bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-4 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 flex items-center gap-3 mx-auto hover:scale-105 transform shadow-lg hover:shadow-red-500/25 relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/cta:translate-x-[200%] transition-transform duration-700"></div>
+                <span className="font-semibold relative z-10">Start a Project</span>
+                <ArrowRight className="w-5 h-5 group-hover/cta:translate-x-1 group-hover/cta:scale-110 transition-all duration-300 relative z-10" />
+              </button>
+            </div>
+
+            {/* Floating Particles Effect */}
+            <div className="absolute top-4 left-4 w-2 h-2 bg-red-500/50 rounded-full animate-pulse"></div>
+            <div className="absolute top-8 right-8 w-1 h-1 bg-pink-500/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-purple-500/50 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
           </div>
         </div>
       </div>
