@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const services = [
@@ -41,16 +42,6 @@ const Services = () => {
     }
   ];
 
-  const handleGetStartedClick = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
-
   return (
     <section id="services" className="py-20 bg-gray-800">
       <div className="container mx-auto px-6">
@@ -75,22 +66,22 @@ const Services = () => {
               </div>
 
               <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-red-500 mb-4">What's Included:</h4>
+                <h4 className="text-lg font-semibold text-blue-500 mb-4">What's Included:</h4>
                 {service.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0"></div>
+                    <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                     <span className="text-gray-300">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-8 pt-6 border-t border-gray-700">
-                <button 
-                  onClick={handleGetStartedClick}
-                  className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-all duration-200 font-semibold hover:scale-105 transform shadow-lg hover:shadow-xl"
+                <Link 
+                  to="/contact"
+                  className="block w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-all duration-200 font-semibold hover:scale-105 transform shadow-lg hover:shadow-xl text-center"
                 >
                   Get Started
-                </button>
+                </Link>
               </div>
             </div>
           ))}
@@ -107,7 +98,7 @@ const Services = () => {
               { step: "04", title: "Deliver", desc: "Testing, refining, and launching" }
             ].map((process, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-white font-bold">{process.step}</span>
                 </div>
                 <h4 className="text-xl font-semibold text-white mb-2">{process.title}</h4>

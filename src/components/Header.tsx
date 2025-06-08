@@ -1,79 +1,49 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'services', 'portfolio', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMenuOpen(false);
-  };
+  const location = useLocation();
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'services', label: 'Services' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'contact', label: 'Contact' },
+    { id: '/', label: 'Home' },
+    { id: '/about', label: 'About' },
+    { id: '/skills', label: 'Skills' },
+    { id: '/services', label: 'Services' },
+    { id: '/portfolio', label: 'Portfolio' },
+    { id: '/contact', label: 'Contact' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-white">
-            <span className="text-red-500">AG</span>Portfolio
-          </div>
+          <Link to="/" className="text-2xl font-bold text-white">
+            <span className="text-blue-500">AG</span>Portfolio
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-red-500 ${
-                  activeSection === item.id ? 'text-red-500' : 'text-gray-300'
+                to={item.id}
+                className={`text-sm font-medium transition-colors duration-200 hover:text-blue-500 ${
+                  location.pathname === item.id ? 'text-blue-500' : 'text-gray-300'
                 }`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-2"
+            <Link
+              to="/contact"
+              className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center gap-2"
             >
               Let's Talk
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,15 +64,16 @@ const Header = () => {
           <div className="md:hidden mt-4 py-4 border-t border-gray-800">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`text-left text-sm font-medium transition-colors duration-200 hover:text-red-500 ${
-                    activeSection === item.id ? 'text-red-500' : 'text-gray-300'
+                  to={item.id}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`text-left text-sm font-medium transition-colors duration-200 hover:text-blue-500 ${
+                    location.pathname === item.id ? 'text-blue-500' : 'text-gray-300'
                   }`}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
             </div>
           </div>
