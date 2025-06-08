@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Portfolio = () => {
   const projects = [
@@ -78,11 +77,21 @@ const Portfolio = () => {
     window.open('https://www.linkedin.com/in/ashishgowdamj', '_blank', 'noopener,noreferrer');
   };
 
+  const handleStartProjectClick = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section id="portfolio" className="py-16 bg-gray-900 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 left-20 w-64 h-64 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
@@ -108,14 +117,14 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/30 hover:border-blue-500/30 transition-all duration-500 animate-fade-in"
+              className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/30 hover:border-red-500/30 transition-all duration-500 animate-fade-in"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
               {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Project Image/Icon with Enhanced Animation */}
-              <div className="relative bg-gradient-to-br from-blue-500 to-cyan-600 h-28 flex items-center justify-center overflow-hidden">
+              <div className="relative bg-gradient-to-br from-red-500 to-pink-600 h-28 flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
                 <span className="text-4xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">{project.image}</span>
               </div>
@@ -124,13 +133,13 @@ const Portfolio = () => {
               <div className="p-5 relative">
                 {/* Category Badge with Animation */}
                 <div className="mb-3">
-                  <span className="inline-block bg-blue-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium transform group-hover:scale-105 transition-transform duration-200">
+                  <span className="inline-block bg-red-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium transform group-hover:scale-105 transition-transform duration-200">
                     {project.category}
                   </span>
                 </div>
 
                 {/* Title with Hover Effect */}
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors duration-300">
                   {project.title}
                 </h3>
                 
@@ -145,7 +154,7 @@ const Portfolio = () => {
                     {project.tech.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="bg-gray-900/50 backdrop-blur-sm text-blue-400 px-2 py-1 rounded text-xs border border-gray-700/50 hover:border-blue-500/50 transition-colors duration-200"
+                        className="bg-gray-900/50 backdrop-blur-sm text-red-400 px-2 py-1 rounded text-xs border border-gray-700/50 hover:border-red-500/50 transition-colors duration-200"
                       >
                         {tech}
                       </span>
@@ -165,7 +174,7 @@ const Portfolio = () => {
                     disabled={!project.link}
                     className={`group/btn flex-1 py-2 px-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm relative overflow-hidden ${
                       project.link 
-                        ? 'bg-gradient-to-r from-blue-500 to-cyan-600 text-white hover:from-blue-600 hover:to-cyan-700 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 cursor-pointer' 
+                        ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white hover:from-red-600 hover:to-pink-700 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25 cursor-pointer' 
                         : 'bg-gray-600/50 text-gray-400 cursor-not-allowed'
                     }`}
                   >
@@ -178,49 +187,49 @@ const Portfolio = () => {
                   
                   <button 
                     onClick={handleLinkedInClick}
-                    className="group/github bg-gray-700/50 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-blue-500/80 hover:scale-110 transition-all duration-300 relative overflow-hidden border border-gray-600/30 hover:border-blue-500/50"
+                    className="group/github bg-gray-700/50 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-red-500/80 hover:scale-110 transition-all duration-300 relative overflow-hidden border border-gray-600/30 hover:border-red-500/50"
                     title="View on GitHub"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent opacity-0 group-hover/github:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-transparent opacity-0 group-hover/github:opacity-100 transition-opacity duration-300"></div>
                     <Github className="w-4 h-4 relative z-10 group-hover/github:rotate-12 transition-transform duration-200" />
                   </button>
                 </div>
               </div>
 
               {/* Animated Border Effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-sm"></div>
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-sm"></div>
             </div>
           ))}
         </div>
 
         {/* Enhanced Call to Action */}
         <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto border border-gray-700/30 group hover:border-blue-500/30 transition-all duration-500">
+          <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto border border-gray-700/30 group hover:border-red-500/30 transition-all duration-500">
             {/* Animated Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-teal-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="relative z-10 space-y-4">
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors duration-300">
                 Interested in Working Together?
               </h3>
               <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
                 I'm always excited to take on new challenges and create amazing digital experiences.
               </p>
               
-              <Link 
-                to="/contact"
-                className="group/cta bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-4 rounded-xl hover:from-blue-600 hover:to-cyan-700 transition-all duration-300 flex items-center gap-3 mx-auto hover:scale-105 transform shadow-lg hover:shadow-blue-500/25 relative overflow-hidden w-fit"
+              <button 
+                onClick={handleStartProjectClick}
+                className="group/cta bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-4 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 flex items-center gap-3 mx-auto hover:scale-105 transform shadow-lg hover:shadow-red-500/25 relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/cta:translate-x-[200%] transition-transform duration-700"></div>
                 <span className="font-semibold relative z-10">Start a Project</span>
                 <ArrowRight className="w-5 h-5 group-hover/cta:translate-x-1 group-hover/cta:scale-110 transition-all duration-300 relative z-10" />
-              </Link>
+              </button>
             </div>
 
             {/* Floating Particles Effect */}
-            <div className="absolute top-4 left-4 w-2 h-2 bg-blue-500/50 rounded-full animate-pulse"></div>
-            <div className="absolute top-8 right-8 w-1 h-1 bg-cyan-500/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-teal-500/50 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute top-4 left-4 w-2 h-2 bg-red-500/50 rounded-full animate-pulse"></div>
+            <div className="absolute top-8 right-8 w-1 h-1 bg-pink-500/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-purple-500/50 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
           </div>
         </div>
       </div>
