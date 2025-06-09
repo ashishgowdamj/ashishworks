@@ -1,10 +1,13 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useToast } from '@/hooks/use-toast';
 
 const Stories = () => {
   const [expandedStory, setExpandedStory] = useState<number | null>(null);
+  const [email, setEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const { toast } = useToast();
 
   const stories = [
     {
@@ -120,6 +123,52 @@ The most valuable lesson? Don't just copy what you see—understand why it works
       setExpandedStory(null);
     } else {
       setExpandedStory(storyId);
+    }
+  };
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your email address to subscribe.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubscribing(true);
+    
+    try {
+      // Simulate subscription process (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Successfully Subscribed!",
+        description: "Thank you for subscribing to my newsletter. You'll receive updates about new stories and insights.",
+      });
+      
+      setEmail('');
+    } catch (error) {
+      toast({
+        title: "Subscription Failed",
+        description: "There was an error subscribing to the newsletter. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubscribing(false);
     }
   };
 
@@ -242,16 +291,23 @@ The most valuable lesson? Don't just copy what you see—understand why it works
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
               Get notified when I publish new stories about design, development, and creative processes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                disabled={isSubscribing}
               />
-              <button className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors duration-300">
-                Subscribe
+              <button 
+                type="submit"
+                disabled={isSubscribing}
+                className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubscribing ? 'Subscribing...' : 'Subscribe'}
               </button>
-            </div>
+            </form>
           </div>
 
         </div>
