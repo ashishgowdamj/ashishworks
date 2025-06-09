@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
 
@@ -8,7 +9,7 @@ const Portfolio = () => {
       description: "Professional business website built with Wix, featuring modern design, business services showcase, and client engagement features.",
       tech: ["Wix", "Web Design", "Business Website", "Responsive Design"],
       category: "Web Development",
-      image: "🏢",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop",
       features: ["Business Showcase", "Professional Design", "Client Engagement"],
       link: "https://www.dhanvith-ventures.com"
     },
@@ -17,7 +18,7 @@ const Portfolio = () => {
       description: "A comprehensive React.js web application featuring interactive quizzes, progress tracking, and personalized learning paths.",
       tech: ["React.js", "JavaScript", "CSS3", "Local Storage"],
       category: "Web Development",
-      image: "🎓",
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=250&fit=crop",
       features: ["Interactive Quizzes", "Progress Tracking", "Responsive Design"],
       link: "https://interactive-learning-platform-nu.vercel.app/"
     },
@@ -26,7 +27,7 @@ const Portfolio = () => {
       description: "Modern travel application UI/UX design created in Figma, featuring intuitive navigation and beautiful visuals.",
       tech: ["Figma", "UI/UX Design", "Prototyping", "Mobile Design"],
       category: "UI/UX Design",
-      image: "✈️",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop",
       features: ["Modern UI", "Travel Planning", "Mobile-First Design"],
       link: "https://www.figma.com/design/ObzfpjbvxVphl9vPVGiO1O/Travel-App?node-id=0-1&t=1rXRhTZP9NvcYyTq-1"
     },
@@ -35,7 +36,7 @@ const Portfolio = () => {
       description: "Native Android application with advanced GPS functionality, location spoofing capabilities, and real-time location sharing.",
       tech: ["Android Studio", "Java", "GPS API", "SQLite"],
       category: "Mobile Development",
-      image: "📍",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=250&fit=crop",
       features: ["Real-time Tracking", "Location Sharing", "GPS Spoofing"]
     },
     {
@@ -43,7 +44,7 @@ const Portfolio = () => {
       description: "Pixel-perfect recreation of Netflix's landing page with responsive design and modern CSS techniques.",
       tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
       category: "UI Development",
-      image: "🎬",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop",
       features: ["Responsive Layout", "Modern CSS", "Interactive Elements"],
       link: "https://netflix-clone-beta-snowy-67.vercel.app"
     },
@@ -52,7 +53,7 @@ const Portfolio = () => {
       description: "Social media platform clone with modern design, user interactions, and responsive layout.",
       tech: ["React.js", "CSS3", "JavaScript", "Responsive Design"],
       category: "Web Development",
-      image: "📘",
+      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=250&fit=crop",
       features: ["Social Interface", "Modern Design", "User Interactions"],
       link: "https://face-book-clone-zzpx.vercel.app"
     },
@@ -61,7 +62,7 @@ const Portfolio = () => {
       description: "Enhanced user interface for the classic game with smooth animations and intuitive user experience.",
       tech: ["JavaScript", "CSS3", "HTML5", "Animations"],
       category: "UI/UX Design",
-      image: "🎮",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop",
       features: ["Smooth Animations", "Enhanced UX", "Score Tracking"],
       link: "https://rock-paper-scissors-iota-green.vercel.app"
     }
@@ -123,10 +124,15 @@ const Portfolio = () => {
               {/* Hover Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              {/* Project Image/Icon with Enhanced Animation */}
-              <div className="relative bg-gradient-to-br from-red-500 to-pink-600 h-28 flex items-center justify-center overflow-hidden">
+              {/* Project Image with Enhanced Animation */}
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
-                <span className="text-4xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">{project.image}</span>
               </div>
 
               {/* Project Content with Enhanced Spacing */}
