@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -14,6 +15,7 @@ const Stories = () => {
       id: 1,
       title: "How I Designed My First Real-World UI Project",
       date: "June 2025",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
       preview: "Building my first real-world UI project was a mix of excitement and chaos. I used Figma and React.js, learned about layout consistency, responsiveness, and simplifying user journeys.",
       readTime: "5 min read",
       fullContent: `Building my first real-world UI project was both thrilling and overwhelming. When I started, I had theoretical knowledge but no practical experience with real-world constraints and user needs.
@@ -41,6 +43,7 @@ This project taught me that good design isn't about making things look pretty—
       id: 2,
       title: "My Favorite UI Design Tools (as a Beginner)",
       date: "June 2025",
+      image: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800&h=400&fit=crop",
       preview: "As a beginner, I found Figma, Coolors.co, Feather Icons, and Type Scale extremely useful. Tools don't make the designer, but they definitely help the process.",
       readTime: "3 min read",
       fullContent: `When I started my UI design journey, I was overwhelmed by the number of tools available. After trying dozens of apps and services, here are the ones that became essential to my workflow.
@@ -74,6 +77,7 @@ Remember: tools don't make you a better designer, but the right tools can remove
       id: 3,
       title: "What I Learned from Cloning Facebook, Netflix & LinkedIn",
       date: "June 2025",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
       preview: "Cloning these UIs using HTML, CSS, and JS helped me understand layout complexity, alignment, and what makes frontend design feel natural.",
       readTime: "7 min read",
       fullContent: `Cloning popular websites was one of the best learning exercises I did as a beginner. Here's what each platform taught me about design and development.
@@ -199,9 +203,18 @@ The most valuable lesson? Don't just copy what you see—understand why it works
                 className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Article Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-50"></div>
+                {/* Article Image */}
+                <div className="h-48 relative overflow-hidden">
+                  <img 
+                    src={story.image} 
+                    alt={story.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=400&fit=crop`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <span className="inline-block px-3 py-1 bg-white/90 backdrop-blur-sm text-sm font-medium text-gray-700 rounded-full">
                       {story.readTime}
