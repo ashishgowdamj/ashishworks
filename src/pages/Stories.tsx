@@ -181,7 +181,7 @@ The most valuable lesson? Don't just copy what you see—understand why it works
       <Header />
       
       {/* Main Content */}
-      <main className="pt-24 pb-16">
+      <main className="pt-32 pb-16">
         <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Header Section */}
