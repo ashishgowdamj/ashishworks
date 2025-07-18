@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Download, Mail, Code, Palette, Zap } from 'lucide-react';
 
@@ -49,7 +48,7 @@ Passionate about creating exceptional digital experiences with user-centered des
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden px-4 py-8">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden px-4 py-8 pt-24 lg:pt-32">
       {/* Enhanced Background with Mesh Gradient */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-teal-500/5"></div>
