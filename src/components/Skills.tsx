@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Code, Palette, Globe, Smartphone, Database, GitBranch, Figma, Zap } from 'lucide-react';
 
 const Skills = () => {
   const skillCategories = [
@@ -54,37 +53,101 @@ const Skills = () => {
     {
       title: "Design Tools",
       tools: [
-        { name: "Figma", icon: <Figma className="w-6 h-6" />, color: "from-purple-500 to-blue-500" },
-        { name: "Adobe XD", icon: <Palette className="w-6 h-6" />, color: "from-pink-500 to-purple-500" },
-        { name: "Sketch", icon: <Palette className="w-6 h-6" />, color: "from-orange-500 to-yellow-500" },
+        { 
+          name: "Figma", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+          color: "from-purple-500 to-blue-500" 
+        },
+        { 
+          name: "Adobe XD", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-original.svg",
+          color: "from-pink-500 to-purple-500" 
+        },
+        { 
+          name: "Sketch", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg",
+          color: "from-orange-500 to-yellow-500" 
+        },
       ]
     },
     {
       title: "Development",
       tools: [
-        { name: "HTML5", icon: <Code className="w-6 h-6" />, color: "from-orange-500 to-red-500" },
-        { name: "CSS3", icon: <Palette className="w-6 h-6" />, color: "from-blue-500 to-cyan-500" },
-        { name: "JavaScript", icon: <Zap className="w-6 h-6" />, color: "from-yellow-500 to-orange-500" },
-        { name: "React", icon: <Globe className="w-6 h-6" />, color: "from-cyan-500 to-blue-500" },
-        { name: "Git", icon: <GitBranch className="w-6 h-6" />, color: "from-gray-500 to-gray-700" },
-        { name: "VSCode", icon: <Code className="w-6 h-6" />, color: "from-blue-600 to-indigo-600" },
+        { 
+          name: "HTML5", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+          color: "from-orange-500 to-red-500" 
+        },
+        { 
+          name: "CSS3", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+          color: "from-blue-500 to-cyan-500" 
+        },
+        { 
+          name: "JavaScript", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+          color: "from-yellow-500 to-orange-500" 
+        },
+        { 
+          name: "React", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          color: "from-cyan-500 to-blue-500" 
+        },
+        { 
+          name: "Git", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+          color: "from-gray-500 to-gray-700" 
+        },
+        { 
+          name: "VSCode", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+          color: "from-blue-600 to-indigo-600" 
+        },
       ]
     },
     {
       title: "Backend & Database",
       tools: [
-        { name: "Flask", icon: <Database className="w-6 h-6" />, color: "from-green-500 to-teal-500" },
-        { name: "SQLite", icon: <Database className="w-6 h-6" />, color: "from-gray-600 to-gray-800" },
-        { name: "Node.js", icon: <Globe className="w-6 h-6" />, color: "from-green-400 to-emerald-500" },
+        { 
+          name: "Flask", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
+          color: "from-green-500 to-teal-500" 
+        },
+        { 
+          name: "SQLite", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+          color: "from-gray-600 to-gray-800" 
+        },
+        { 
+          name: "Node.js", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+          color: "from-green-400 to-emerald-500" 
+        },
       ]
     },
     {
       title: "Mobile Development",
       tools: [
-        { name: "Android Studio", icon: <Smartphone className="w-6 h-6" />, color: "from-green-400 to-teal-500" },
-        { name: "Xcode", icon: <Smartphone className="w-6 h-6" />, color: "from-blue-400 to-indigo-500" },
-        { name: "React Native", icon: <Smartphone className="w-6 h-6" />, color: "from-cyan-400 to-blue-500" },
-        { name: "Flutter", icon: <Smartphone className="w-6 h-6" />, color: "from-blue-500 to-cyan-400" },
+        { 
+          name: "Android Studio", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg",
+          color: "from-green-400 to-teal-500" 
+        },
+        { 
+          name: "Xcode", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg",
+          color: "from-blue-400 to-indigo-500" 
+        },
+        { 
+          name: "React Native", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+          color: "from-cyan-400 to-blue-500" 
+        },
+        { 
+          name: "Flutter", 
+          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
+          color: "from-blue-500 to-cyan-400" 
+        },
       ]
     }
   ];
@@ -171,11 +234,14 @@ const Skills = () => {
                       {/* Animated Background */}
                       <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}></div>
                       
-                      {/* Icon Container */}
-                      <div className={`w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                        <div className="text-white">
-                          {tool.icon}
-                        </div>
+                      {/* Logo Container */}
+                      <div className="w-12 h-12 lg:w-16 lg:h-16 bg-white/10 rounded-xl flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg backdrop-blur-sm">
+                        <img 
+                          src={tool.logo} 
+                          alt={`${tool.name} logo`}
+                          className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
+                          loading="lazy"
+                        />
                       </div>
                       
                       <span className="text-gray-300 font-semibold text-sm lg:text-base group-hover:text-white transition-colors duration-300 block">
