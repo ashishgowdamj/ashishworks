@@ -50,22 +50,43 @@ const Skills = () => {
     }
   ];
 
-  const tools = [
-    { name: "Figma", icon: <Figma className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-purple-500 to-blue-500" },
-    { name: "HTML5", icon: <Code className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-orange-500 to-red-500" },
-    { name: "CSS3", icon: <Palette className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-blue-500 to-cyan-500" },
-    { name: "JavaScript", icon: <Zap className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-yellow-500 to-orange-500" },
-    { name: "React", icon: <Globe className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-cyan-500 to-blue-500" },
-    { name: "Git", icon: <GitBranch className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-gray-500 to-gray-700" },
-    { name: "VSCode", icon: <Code className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-blue-600 to-indigo-600" },
-    { name: "Flask", icon: <Database className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-green-500 to-teal-500" },
-    { name: "SQLite", icon: <Database className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-gray-600 to-gray-800" },
-    { name: "Android Studio", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-green-400 to-teal-500" },
-    { name: "Xcode", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-blue-400 to-indigo-500" },
-    { name: "React Native", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-cyan-400 to-blue-500" },
-    { name: "Flutter", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-blue-500 to-cyan-400" },
-    { name: "Chrome DevTools", icon: <Globe className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-red-500 to-yellow-500" },
-    { name: "Responsive Design", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-indigo-500 to-purple-500" }
+  const toolCategories = [
+    {
+      title: "Design Tools",
+      tools: [
+        { name: "Figma", icon: <Figma className="w-6 h-6" />, color: "from-purple-500 to-blue-500" },
+        { name: "Adobe XD", icon: <Palette className="w-6 h-6" />, color: "from-pink-500 to-purple-500" },
+        { name: "Sketch", icon: <Palette className="w-6 h-6" />, color: "from-orange-500 to-yellow-500" },
+      ]
+    },
+    {
+      title: "Development",
+      tools: [
+        { name: "HTML5", icon: <Code className="w-6 h-6" />, color: "from-orange-500 to-red-500" },
+        { name: "CSS3", icon: <Palette className="w-6 h-6" />, color: "from-blue-500 to-cyan-500" },
+        { name: "JavaScript", icon: <Zap className="w-6 h-6" />, color: "from-yellow-500 to-orange-500" },
+        { name: "React", icon: <Globe className="w-6 h-6" />, color: "from-cyan-500 to-blue-500" },
+        { name: "Git", icon: <GitBranch className="w-6 h-6" />, color: "from-gray-500 to-gray-700" },
+        { name: "VSCode", icon: <Code className="w-6 h-6" />, color: "from-blue-600 to-indigo-600" },
+      ]
+    },
+    {
+      title: "Backend & Database",
+      tools: [
+        { name: "Flask", icon: <Database className="w-6 h-6" />, color: "from-green-500 to-teal-500" },
+        { name: "SQLite", icon: <Database className="w-6 h-6" />, color: "from-gray-600 to-gray-800" },
+        { name: "Node.js", icon: <Globe className="w-6 h-6" />, color: "from-green-400 to-emerald-500" },
+      ]
+    },
+    {
+      title: "Mobile Development",
+      tools: [
+        { name: "Android Studio", icon: <Smartphone className="w-6 h-6" />, color: "from-green-400 to-teal-500" },
+        { name: "Xcode", icon: <Smartphone className="w-6 h-6" />, color: "from-blue-400 to-indigo-500" },
+        { name: "React Native", icon: <Smartphone className="w-6 h-6" />, color: "from-cyan-400 to-blue-500" },
+        { name: "Flutter", icon: <Smartphone className="w-6 h-6" />, color: "from-blue-500 to-cyan-400" },
+      ]
+    }
   ];
 
   return (
@@ -128,36 +149,41 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Enhanced Tools & Technologies */}
+        {/* Clean Tools & Technologies Section */}
         <div className="animate-fade-in" style={{ animationDelay: '0.5s' }}>
           <h3 className="text-2xl lg:text-4xl font-bold text-white text-center mb-12 lg:mb-16">
             Tools & 
             <span className="bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent"> Technologies</span>
           </h3>
           
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 lg:gap-6">
-            {tools.map((tool, index) => (
-              <div
-                key={index}
-                className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl p-3 lg:p-6 rounded-2xl text-center hover:scale-110 transition-all duration-500 border border-gray-700/30 hover:border-blue-500/30 cursor-pointer animate-fade-in"
-                style={{ animationDelay: `${0.05 * index}s` }}
-              >
-                {/* Animated Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}></div>
-                
-                {/* Icon Container */}
-                <div className={`w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mx-auto mb-2 lg:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <div className="text-white group-hover:scale-110 transition-transform duration-300">
-                    {tool.icon}
-                  </div>
+          <div className="space-y-12">
+            {toolCategories.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="animate-fade-in" style={{ animationDelay: `${0.1 * categoryIndex}s` }}>
+                <h4 className="text-lg lg:text-xl font-semibold text-gray-300 mb-6 text-center">
+                  {category.title}
+                </h4>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6 max-w-4xl mx-auto">
+                  {category.tools.map((tool, toolIndex) => (
+                    <div
+                      key={toolIndex}
+                      className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl p-4 lg:p-6 rounded-2xl text-center hover:scale-105 transition-all duration-300 border border-gray-700/30 hover:border-blue-500/30 cursor-pointer"
+                    >
+                      {/* Animated Background */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}></div>
+                      
+                      {/* Icon Container */}
+                      <div className={`w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-br ${tool.color} rounded-xl flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        <div className="text-white">
+                          {tool.icon}
+                        </div>
+                      </div>
+                      
+                      <span className="text-gray-300 font-semibold text-sm lg:text-base group-hover:text-white transition-colors duration-300 block">
+                        {tool.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                
-                <span className="text-gray-300 font-semibold text-xs lg:text-sm group-hover:text-white transition-colors duration-300">
-                  {tool.name}
-                </span>
-                
-                {/* Hover Glow Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl -z-10`}></div>
               </div>
             ))}
           </div>
