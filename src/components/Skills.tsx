@@ -27,14 +27,25 @@ const Skills = () => {
       ]
     },
     {
+      title: "Mobile Development",
+      skills: [
+        { name: "Android Development", level: 75 },
+        { name: "iOS Development", level: 70 },
+        { name: "React Native", level: 72 },
+        { name: "Flutter", level: 68 },
+        { name: "Mobile UI/UX", level: 80 },
+        { name: "App Store Optimization", level: 65 },
+      ]
+    },
+    {
       title: "Additional Skills",
       skills: [
         { name: "Accessibility", level: 78 },
         { name: "User Research", level: 72 },
         { name: "Flask", level: 70 },
         { name: "SQLite", level: 68 },
-        { name: "Android Development", level: 65 },
         { name: "Problem Solving", level: 90 },
+        { name: "Cross-Platform Development", level: 73 },
       ]
     }
   ];
@@ -50,6 +61,9 @@ const Skills = () => {
     { name: "Flask", icon: <Database className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-green-500 to-teal-500" },
     { name: "SQLite", icon: <Database className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-gray-600 to-gray-800" },
     { name: "Android Studio", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-green-400 to-teal-500" },
+    { name: "Xcode", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-blue-400 to-indigo-500" },
+    { name: "React Native", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-cyan-400 to-blue-500" },
+    { name: "Flutter", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-blue-500 to-cyan-400" },
     { name: "Chrome DevTools", icon: <Globe className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-red-500 to-yellow-500" },
     { name: "Responsive Design", icon: <Smartphone className="w-6 h-6 lg:w-8 lg:h-8" />, color: "from-indigo-500 to-purple-500" }
   ];
@@ -79,7 +93,7 @@ const Skills = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8 mb-16 lg:mb-20">
+        <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 mb-16 lg:mb-20">
           {skillCategories.map((category, index) => (
             <div key={index} className="group animate-fade-in" style={{ animationDelay: `${0.1 * index}s` }}>
               <div className="bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-xl p-6 lg:p-8 rounded-3xl border border-gray-700/30 hover:border-blue-500/30 transition-all duration-500 hover:transform hover:scale-105 relative overflow-hidden">
@@ -121,7 +135,7 @@ const Skills = () => {
             <span className="bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent"> Technologies</span>
           </h3>
           
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 lg:gap-6">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 lg:gap-6">
             {tools.map((tool, index) => (
               <div
                 key={index}
