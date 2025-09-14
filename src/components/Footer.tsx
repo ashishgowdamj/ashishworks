@@ -10,13 +10,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
+    <footer className="bg-[#0b0b0b] border-t border-gray-800">
       <div className="container mx-auto px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Left Section */}
           <div>
             <div className="text-2xl font-bold text-white mb-4">
-              <span className="text-red-500">AG</span>Portfolio
+              <span className="text-amber-400">AG</span>Portfolio
             </div>
             <p className="text-gray-400 max-w-md">
               Passionate UI/UX Designer & Front-End Developer creating exceptional digital experiences.
@@ -31,7 +31,7 @@ const Footer = () => {
                 href="https://github.com/ashishgowdamj"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-red-500 transition-colors duration-200"
+                className="w-10 h-10 bg-gray-800 border border-gray-800 rounded-lg flex items-center justify-center hover:border-amber-400 transition-colors"
               >
                 <Github className="w-5 h-5 text-white" />
               </a>
@@ -39,7 +39,7 @@ const Footer = () => {
                 href="https://linkedin.com/in/ashishgowdamj"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-red-500 transition-colors duration-200"
+                className="w-10 h-10 bg-gray-800 border border-gray-800 rounded-lg flex items-center justify-center hover:border-amber-400 transition-colors"
               >
                 <Linkedin className="w-5 h-5 text-white" />
               </a>
@@ -50,7 +50,7 @@ const Footer = () => {
           <div className="text-center md:text-right">
             <button
               onClick={scrollToTop}
-              className="inline-flex items-center gap-2 text-gray-400 hover:text-red-500 transition-colors duration-200 mb-4"
+              className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors mb-4"
             >
               <span>Back to Top</span>
               <ArrowUp className="w-4 h-4" />

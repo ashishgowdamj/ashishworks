@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,29 +80,31 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-sm border-b border-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/80 backdrop-blur-sm border-b border-gray-800">
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-white cursor-pointer" onClick={() => navigate('/')}>
-            <span className="text-red-500">AG</span>Portfolio
+            <span className="text-cyan-400">AG</span>Portfolio
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-red-500 ${
-                  activeSection === item.id ? 'text-red-500' : 'text-gray-300'
+                className={`text-sm font-medium transition-colors duration-200 hover:text-cyan-400 ${
+                  activeSection === item.id ? 'text-cyan-400' : 'text-gray-300'
                 }`}
               >
                 {item.label}
               </button>
             ))}
+            <div className="h-6 w-px bg-gray-700/50" />
+            <ThemeToggle />
             <button
               onClick={() => handleNavigation('contact')}
-              className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-2"
+              className="bg-cyan-500 text-gray-900 font-semibold px-6 py-2 rounded-lg hover:bg-cyan-400 transition-colors duration-200 flex items-center gap-2"
             >
               Let's Talk
               <ArrowRight className="w-4 h-4" />
@@ -129,13 +132,16 @@ const Header = () => {
                 <button
                   key={item.id}
                   onClick={() => handleNavigation(item.id)}
-                  className={`text-left text-sm font-medium transition-colors duration-200 hover:text-red-500 ${
-                    activeSection === item.id ? 'text-red-500' : 'text-gray-300'
+                  className={`text-left text-sm font-medium transition-colors duration-200 hover:text-cyan-400 ${
+                    activeSection === item.id ? 'text-cyan-400' : 'text-gray-300'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
+              <div className="pt-2 border-t border-gray-800">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         )}

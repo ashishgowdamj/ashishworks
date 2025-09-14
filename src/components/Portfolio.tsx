@@ -1,72 +1,8 @@
 import React from 'react';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { projects } from '@/lib/projects';
 
 const Portfolio = () => {
-  const projects = [
-    {
-      title: "Dhanvith Ventures",
-      description: "Professional business website built with Wix, featuring modern design, business services showcase, and client engagement features.",
-      tech: ["Wix", "Web Design", "Business Website", "Responsive Design"],
-      category: "Web Development",
-      image: "https://static.wixstatic.com/media/11062b_4f8c7e9c8d5b4e8a9c6d2f1a3e5b7c9d~mv2.jpg/v1/fill/w_400,h_250,al_c,q_80,usm_0.66_1.00_0.01/dhanvith-ventures-hero.webp",
-      features: ["Business Showcase", "Professional Design", "Client Engagement"],
-      link: "https://www.dhanvith-ventures.com"
-    },
-    {
-      title: "Interactive Learning Platform",
-      description: "A comprehensive React.js web application featuring interactive quizzes, progress tracking, and personalized learning paths.",
-      tech: ["React.js", "JavaScript", "CSS3", "Local Storage"],
-      category: "Web Development",
-      image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=400&h=250&fit=crop&auto=format",
-      features: ["Interactive Quizzes", "Progress Tracking", "Responsive Design"],
-      link: "https://interactive-learning-platform-nu.vercel.app/"
-    },
-    {
-      title: "Travel App Design",
-      description: "Modern travel application UI/UX design created in Figma, featuring intuitive navigation and beautiful visuals.",
-      tech: ["Figma", "UI/UX Design", "Prototyping", "Mobile Design"],
-      category: "UI/UX Design",
-      image: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=250&fit=crop&auto=format",
-      features: ["Modern UI", "Travel Planning", "Mobile-First Design"],
-      link: "https://www.figma.com/design/ObzfpjbvxVphl9vPVGiO1O/Travel-App?node-id=0-1&t=1rXRhTZP9NvcYyTq-1"
-    },
-    {
-      title: "GPS Simulator App",
-      description: "Native Android application with advanced GPS functionality, location spoofing capabilities, and real-time location sharing.",
-      tech: ["Android Studio", "Java", "GPS API", "SQLite"],
-      category: "Mobile Development",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=250&fit=crop&auto=format",
-      features: ["Real-time Tracking", "Location Sharing", "GPS Spoofing"]
-    },
-    {
-      title: "Netflix Static Clone",
-      description: "Pixel-perfect recreation of Netflix's landing page with responsive design and modern CSS techniques.",
-      tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-      category: "UI Development",
-      image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=400&h=250&fit=crop&auto=format",
-      features: ["Responsive Layout", "Modern CSS", "Interactive Elements"],
-      link: "https://netflix-clone-beta-snowy-67.vercel.app"
-    },
-    {
-      title: "Facebook Clone",
-      description: "Social media platform clone with modern design, user interactions, and responsive layout.",
-      tech: ["React.js", "CSS3", "JavaScript", "Responsive Design"],
-      category: "Web Development",
-      image: "https://images.unsplash.com/photo-1611262588024-d12430b98920?w=400&h=250&fit=crop&auto=format",
-      features: ["Social Interface", "Modern Design", "User Interactions"],
-      link: "https://face-book-clone-zzpx.vercel.app"
-    },
-    {
-      title: "Rock Paper Scissors Game",
-      description: "Enhanced user interface for the classic game with smooth animations and intuitive user experience.",
-      tech: ["JavaScript", "CSS3", "HTML5", "Animations"],
-      category: "UI/UX Design",
-      image: "https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=400&h=250&fit=crop&auto=format",
-      features: ["Smooth Animations", "Enhanced UX", "Score Tracking"],
-      link: "https://rock-paper-scissors-iota-green.vercel.app"
-    }
-  ];
-
   const handleProjectClick = (link?: string) => {
     if (link) {
       window.open(link, '_blank', 'noopener,noreferrer');
@@ -88,28 +24,14 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-16 bg-gray-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-20 w-64 h-64 bg-red-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="portfolio" className="py-16 bg-[#0b0b0b]">
+      <div className="container mx-auto px-6">
         {/* Enhanced Header with Staggered Animation */}
-        <div className="text-center mb-12 space-y-4">
-          <div className="animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-              My Portfolio
-            </h2>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              A showcase of my recent projects demonstrating skills in UI/UX design, 
-              front-end development, and full-stack applications.
-            </p>
-          </div>
+        <div className="text-center mb-12 space-y-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Selected Work</h2>
+          <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            A concise set of projects across design and front‑end.
+          </p>
         </div>
 
         {/* Enhanced Grid with Staggered Card Animations */}
@@ -117,127 +39,98 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group relative bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/30 hover:border-red-500/30 transition-all duration-500 animate-fade-in"
-              style={{ animationDelay: `${0.1 * index}s` }}
+              className="group relative bg-gray-800 rounded-xl overflow-hidden border border-gray-800 hover:border-amber-400/60 transition-colors"
             >
-              {/* Hover Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/5 to-pink-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Project Image with Enhanced Animation */}
               <div className="relative h-48 overflow-hidden">
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover"
                   onError={(e) => {
                     e.currentTarget.src = `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop`;
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[200%] transition-transform duration-1000"></div>
               </div>
 
-              {/* Project Content with Enhanced Spacing */}
-              <div className="p-5 relative">
-                {/* Category Badge with Animation */}
+              <div className="p-6 relative">
                 <div className="mb-3">
-                  <span className="inline-block bg-red-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium transform group-hover:scale-105 transition-transform duration-200">
+                  <span className="inline-block bg-amber-400 text-black px-3 py-1 rounded-full text-xs font-semibold">
                     {project.category}
                   </span>
                 </div>
 
-                {/* Title with Hover Effect */}
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-red-400 transition-colors duration-300">
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
                   {project.title}
                 </h3>
                 
-                {/* Description with Line Clamp */}
-                <p className="text-gray-300 mb-3 text-sm leading-relaxed line-clamp-2 group-hover:text-gray-200 transition-colors duration-300">
+                <p className="text-gray-300 mb-3 text-sm leading-relaxed line-clamp-2">
                   {project.description}
                 </p>
 
-                {/* Technologies with Enhanced Styling */}
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-1">
                     {project.tech.slice(0, 3).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="bg-gray-900/50 backdrop-blur-sm text-red-400 px-2 py-1 rounded text-xs border border-gray-700/50 hover:border-red-500/50 transition-colors duration-200"
+                        className="bg-gray-900 text-amber-300 px-2 py-1 rounded text-xs border border-gray-800 hover:border-amber-400/60 transition-colors"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.tech.length > 3 && (
-                      <span className="text-gray-500 text-xs px-2 py-1 opacity-70">
+                      <span className="text-gray-500 text-xs px-2 py-1">
                         +{project.tech.length - 3} more
                       </span>
                     )}
                   </div>
                 </div>
 
-                {/* Enhanced Action Buttons */}
                 <div className="flex gap-2">
                   <button 
                     onClick={() => handleProjectClick(project.link)}
                     disabled={!project.link}
-                    className={`group/btn flex-1 py-2 px-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm relative overflow-hidden ${
+                    className={`flex-1 py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm ${
                       project.link 
-                        ? 'bg-gradient-to-r from-red-500 to-pink-600 text-white hover:from-red-600 hover:to-pink-700 hover:scale-105 hover:shadow-lg hover:shadow-red-500/25 cursor-pointer' 
-                        : 'bg-gray-600/50 text-gray-400 cursor-not-allowed'
+                        ? 'bg-amber-400 text-black font-semibold hover:bg-amber-300 cursor-pointer' 
+                        : 'bg-gray-700 text-gray-400 cursor-not-allowed'
                     }`}
                   >
-                    {project.link && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/btn:translate-x-[200%] transition-transform duration-700"></div>
-                    )}
-                    <ExternalLink className={`w-3 h-3 ${project.link ? 'group-hover/btn:rotate-12' : ''} transition-transform duration-200`} />
+                    <ExternalLink className="w-3 h-3" />
                     <span className="relative z-10">{project.link ? 'View' : 'Soon'}</span>
                   </button>
                   
                   <button 
                     onClick={handleLinkedInClick}
-                    className="group/github bg-gray-700/50 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-red-500/80 hover:scale-110 transition-all duration-300 relative overflow-hidden border border-gray-600/30 hover:border-red-500/50"
+                    className="bg-gray-800 text-white p-2 rounded-lg hover:border-amber-400 transition-colors border border-gray-800"
                     title="View on GitHub"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 to-transparent opacity-0 group-hover/github:opacity-100 transition-opacity duration-300"></div>
-                    <Github className="w-4 h-4 relative z-10 group-hover/github:rotate-12 transition-transform duration-200" />
+                    <Github className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-
-              {/* Animated Border Effect */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500 via-pink-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-sm"></div>
             </div>
           ))}
         </div>
 
-        {/* Enhanced Call to Action */}
-        <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          <div className="relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm p-8 rounded-2xl max-w-2xl mx-auto border border-gray-700/30 group hover:border-red-500/30 transition-all duration-500">
-            {/* Animated Background Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-red-500/5 via-pink-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            <div className="relative z-10 space-y-4">
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-red-400 transition-colors duration-300">
+        <div className="text-center mt-12">
+          <div className="p-8 rounded-2xl max-w-2xl mx-auto border border-gray-800 bg-gray-800/40">
+            <div className="space-y-4">
+              <h3 className="text-2xl font-bold text-white mb-3">
                 Interested in Working Together?
               </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                I'm always excited to take on new challenges and create amazing digital experiences.
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                I'm open for freelance and collaborations.
               </p>
               
               <button 
                 onClick={handleStartProjectClick}
-                className="group/cta bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-4 rounded-xl hover:from-red-600 hover:to-pink-700 transition-all duration-300 flex items-center gap-3 mx-auto hover:scale-105 transform shadow-lg hover:shadow-red-500/25 relative overflow-hidden"
+                className="bg-amber-400 text-black font-semibold px-8 py-3 rounded-xl hover:bg-amber-300 transition-colors flex items-center gap-3 mx-auto"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover/cta:translate-x-[200%] transition-transform duration-700"></div>
-                <span className="font-semibold relative z-10">Start a Project</span>
-                <ArrowRight className="w-5 h-5 group-hover/cta:translate-x-1 group-hover/cta:scale-110 transition-all duration-300 relative z-10" />
+                <span>Start a Project</span>
+                <ArrowRight className="w-5 h-5" />
               </button>
             </div>
-
-            {/* Floating Particles Effect */}
-            <div className="absolute top-4 left-4 w-2 h-2 bg-red-500/50 rounded-full animate-pulse"></div>
-            <div className="absolute top-8 right-8 w-1 h-1 bg-pink-500/50 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute bottom-6 left-8 w-1.5 h-1.5 bg-purple-500/50 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
           </div>
         </div>
       </div>

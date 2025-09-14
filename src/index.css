@@ -99,6 +99,18 @@
   }
 }
 
+/* Global box-sizing and border defaults */
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: hsl(var(--border));
+  }
+}
+
+/* Removed custom spacing overrides to keep Tailwind defaults consistent */
+
 @layer utilities {
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
