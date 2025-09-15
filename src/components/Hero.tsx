@@ -51,8 +51,6 @@ Passionate about creating exceptional digital experiences with user-centered des
 
   return (
     <section id="home" className="relative overflow-hidden min-h-screen flex items-start justify-center bg-[#0b0b0b] px-6 pt-10 pb-24">
-      {/* Subtle right-to-left gradient background */}
-      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-amber-300/10 via-white/5 to-transparent" />
       <div className="container mx-auto max-w-6xl w-full">
         {/* Top Row: Open to work + Download */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-10">
