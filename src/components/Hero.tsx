@@ -111,7 +111,7 @@ Passionate about creating exceptional digital experiences with user-centered des
               I enjoy creating web applications using React.js, Next.js, Firebase and Supabase, as well as developing mobile apps with React Native, Flutter and Android Studio
             </p>
           </div>
-          <p className="text-white font-bold leading-tight mt-6 sm:mt-8 md:mt-10 pt-[40px] text-[35px] sm:text-[41px] md:text-[60px]">
+          <p className="text-white font-bold leading-tight mt-6 sm:mt-8 md:mt-10 pt-[40px] text-[35px] sm:text-[41px] md:text-[53px]">
             Let’s build something great together!
           </p>
         </div>
