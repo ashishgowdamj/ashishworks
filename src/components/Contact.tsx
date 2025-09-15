@@ -187,14 +187,32 @@ const Contact = () => {
                   +91 63620 32496
                 </a>
               </div>
-              <h4 className="text-gray-300 font-semibold mb-3">Social Media</h4>
-              <div className="space-y-2 text-gray-300 text-sm">
-                <a href="https://x.com/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400">
-                  <img src="https://cdn.simpleicons.org/x/FFFFFF" alt="X" className="w-4 h-4" />
-                  X
+
+              {/* Schedule Call Button */}
+              <div className="mt-6">
+                <a
+                  href="https://calendly.com/ashishgowdamj/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full
+                             bg-[#062c23] text-emerald-300 font-medium shadow-md border border-[#0b4236]
+                             transition-colors duration-200 hover:bg-[#0a3a2f]"
+                >
+                  Schedule a call
                 </a>
-                <a href="https://linkedin.com/in/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400"><Linkedin className="w-4 h-4" />LinkedIn</a>
-                <a href="https://github.com/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400"><Github className="w-4 h-4" />GitHub</a>
+              </div>
+
+              {/* Social Links */}
+              <div className="mt-6 pt-6 border-t border-gray-700/50">
+                <h4 className="text-gray-300 font-semibold mb-3">Social Media</h4>
+                <div className="space-y-2 text-gray-300 text-sm">
+                  <a href="https://x.com/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400">
+                    <img src="https://cdn.simpleicons.org/x/FFFFFF" alt="X" className="w-4 h-4" />
+                    X
+                  </a>
+                  <a href="https://linkedin.com/in/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400"><Linkedin className="w-4 h-4" />LinkedIn</a>
+                  <a href="https://github.com/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400"><Github className="w-4 h-4" />GitHub</a>
+                </div>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ import BottomNav from '@/components/BottomNav';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#0b0b0b] pb-24">
+    <div className="min-h-screen bg-[#0b0b0b] pb-2">
       <Hero />
       <About />
       <Skills />

@@ -7,6 +7,7 @@ export type Project = {
   features?: string[];
   link?: string;
   repo?: string;
+  doc?: string; // Optional: details document for unpublished apps
 };
 
 export const projects: Project[] = [
@@ -24,7 +25,7 @@ export const projects: Project[] = [
     title: "Dhanvith Ventures",
     description:
       "Professional business website featuring modern design, services showcase, and client engagement.",
-    tech: ["Wix", "Web Design", "Business Website", "Responsive"],
+    tech: ["React", "TypeScript", "Web Design", "Responsive"],
     category: "Web",
     image: "/dhanvith-hero.png",
     features: ["Business Showcase", "Professional Design", "Client Engagement"],
@@ -39,6 +40,8 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=500&fit=crop&auto=format",
     features: ["Cross‑Platform", "Modern UI", "MongoDB Backend"],
+    // Replace with your Google Docs view link (set sharing to "Anyone with link: Viewer")
+    doc: "", 
   },
   {
     title: "Interactive Learning Platform",
@@ -61,5 +64,7 @@ export const projects: Project[] = [
     image:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&auto=format",
     features: ["Real-time Tracking", "Location Sharing", "GPS Spoofing"],
+    // Replace with your Google Docs view link
+    doc: "",
   },
 ];

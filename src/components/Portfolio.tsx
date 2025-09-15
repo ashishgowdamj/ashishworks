@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, FileText } from 'lucide-react';
 import { projects } from '@/lib/projects';
 
 const Portfolio = () => {
@@ -10,6 +10,12 @@ const Portfolio = () => {
   };
 
   // Removed GitHub view button as requested
+
+  const handleDocClick = (doc?: string) => {
+    if (doc) {
+      window.open(doc, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   const handleStartProjectClick = () => {
     const contactSection = document.getElementById('contact');
@@ -43,7 +49,7 @@ const Portfolio = () => {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                   onError={(e) => {
                     e.currentTarget.src = `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop`;
                   }}
@@ -84,19 +90,30 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                <div className="flex">
-                  <button 
-                    onClick={() => handleProjectClick(project.link)}
-                    disabled={!project.link}
-                    className={`flex-1 py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm ${
-                      project.link 
-                        ? 'bg-amber-400 text-black font-semibold hover:bg-amber-300 cursor-pointer' 
-                        : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                    }`}
-                  >
-                    <ExternalLink className="w-3 h-3" />
-                    <span className="relative z-10">{project.link ? 'View' : 'Soon'}</span>
-                  </button>
+                <div className="flex gap-2">
+                  {project.link && (
+                    <button 
+                      onClick={() => handleProjectClick(project.link)}
+                      className="flex-1 py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm bg-amber-400 text-black font-semibold hover:bg-amber-300"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span className="relative z-10">View</span>
+                    </button>
+                  )}
+                  {project.doc && (
+                    <button 
+                      onClick={() => handleDocClick(project.doc)}
+                      className="flex-1 py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm bg-gray-800 text-white border border-gray-700 hover:border-amber-400"
+                    >
+                      <FileText className="w-4 h-4" />
+                      <span>Details</span>
+                    </button>
+                  )}
+                  {!project.link && !project.doc && (
+                    <span className="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gray-700 text-gray-400 text-sm cursor-not-allowed flex-1">
+                      Soon
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

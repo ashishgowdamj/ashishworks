@@ -10,9 +10,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0b0b0b] border-t border-gray-800">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
+    <footer id="footer" className="bg-[#0b0b0b] border-t border-gray-800">
+      <div className="container mx-auto px-6 py-8">
+        <div className="grid md:grid-cols-3 gap-6 items-center">
           {/* Left Section */}
           <div>
             <div className="text-2xl font-bold text-white mb-1">
