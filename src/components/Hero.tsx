@@ -50,11 +50,13 @@ Passionate about creating exceptional digital experiences with user-centered des
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-start justify-center bg-[#0b0b0b] px-6 pt-10 pb-24">
+    <section id="home" className="relative overflow-hidden min-h-screen flex items-start justify-center bg-[#0b0b0b] px-6 pt-10 pb-24">
+      {/* Subtle right-to-left gradient background */}
+      <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-gradient-to-l from-amber-300/10 via-white/5 to-transparent" />
       <div className="container mx-auto max-w-6xl w-full">
         {/* Top Row: Open to work + Download */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-10">
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-white">
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-white rounded-full border border-white/10 bg-white/5 backdrop-blur px-3 py-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-green-500"></span>
             <span>Open to work</span>
           </div>
