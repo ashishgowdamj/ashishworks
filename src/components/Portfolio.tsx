@@ -28,7 +28,7 @@ const Portfolio = () => {
       <div className="container mx-auto px-6">
         {/* Enhanced Header with Staggered Animation */}
         <div className="text-center mb-12 space-y-3">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Projects</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">Projects</h2>
           <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
             My Remarkable Projects
           </p>
