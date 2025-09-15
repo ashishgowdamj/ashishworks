@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Search, FileText, Briefcase, Wrench, Link as LinkIcon } from 'lucide-react';
+import { Home, FileText, Briefcase, Wrench, Link as LinkIcon } from 'lucide-react';
 
 const BottomNav: React.FC = () => {
   const [active, setActive] = useState<string>('home');
@@ -39,7 +39,7 @@ const BottomNav: React.FC = () => {
             onClick={() => scrollTo('home')}
             className={`flex items-center gap-2 md:gap-3 px-3.5 py-2 md:px-4 rounded-full text-sm md:text-base ${active === 'home' ? 'bg-white text-black font-semibold' : 'text-white hover:bg-[#1f1f1f]'}`}
           >
-            <Search className="w-5 h-5" />
+            <Home className="w-5 h-5" />
             <span className="hidden md:inline">Home</span>
           </button>
           <button
@@ -67,12 +67,12 @@ const BottomNav: React.FC = () => {
             <span className="hidden md:inline">Services</span>
           </button>
           <button
-            aria-label="Portfolio"
+            aria-label="Projects"
             onClick={() => scrollTo('portfolio')}
             className={`flex items-center gap-2 md:gap-3 px-3.5 py-2 md:px-4 rounded-full text-sm md:text-base ${active === 'portfolio' ? 'bg-white text-black font-semibold' : 'text-white hover:bg-[#1f1f1f]'}`}
           >
             <LinkIcon className="w-5 h-5" />
-            <span className="hidden md:inline">Portfolio</span>
+            <span className="hidden md:inline">Projects</span>
           </button>
         </div>
       </div>
