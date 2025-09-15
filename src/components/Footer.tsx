@@ -15,12 +15,20 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Left Section */}
           <div>
-            <div className="text-2xl font-bold text-white mb-4">
-              <span className="text-amber-400">AG</span>Portfolio
+            <div className="text-2xl font-bold text-white mb-1">
+              Ashish Gowda M J
             </div>
             <p className="text-gray-400 max-w-md">
-              Passionate UI/UX Designer & Front-End Developer creating exceptional digital experiences.
+              Front–End Developer & UX/UI Designer
             </p>
+            <div className="mt-2 space-y-1">
+              <a href="mailto:ashishgowdamj@gmail.com" className="block text-gray-300 hover:text-amber-400 text-sm">
+                ashishgowdamj@gmail.com
+              </a>
+              <a href="tel:+916362032496" className="block text-gray-300 hover:text-amber-400 text-sm">
+                +91 63620 32496
+              </a>
+            </div>
           </div>
 
           {/* Center Section */}

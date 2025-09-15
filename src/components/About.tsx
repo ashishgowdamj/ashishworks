@@ -57,10 +57,7 @@ const About = () => {
                 <div className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">2+</div>
                 <div className="text-gray-300 text-sm lg:text-base">Years Learning</div>
               </div>
-              <div className="bg-gray-800 border border-gray-800 p-4 lg:p-6 rounded-2xl text-center">
-                <div className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">12+</div>
-                <div className="text-gray-300 text-sm lg:text-base">Technologies</div>
-              </div>
+              
               <div className="bg-gray-800 border border-gray-800 p-4 lg:p-6 rounded-2xl text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">∞</div>
                 <div className="text-gray-300 text-sm lg:text-base">Passion</div>

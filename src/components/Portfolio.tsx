@@ -28,9 +28,9 @@ const Portfolio = () => {
       <div className="container mx-auto px-6">
         {/* Enhanced Header with Staggered Animation */}
         <div className="text-center mb-12 space-y-3">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Selected Work</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Projects</h2>
           <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            A concise set of projects across design and front‑end.
+            My Remarkable Projects
           </p>
         </div>
 
@@ -113,26 +113,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <div className="p-8 rounded-2xl max-w-2xl mx-auto border border-gray-800 bg-gray-800/40">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Interested in Working Together?
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                I'm open for freelance and collaborations.
-              </p>
-              
-              <button 
-                onClick={handleStartProjectClick}
-                className="bg-amber-400 text-black font-semibold px-8 py-3 rounded-xl hover:bg-amber-300 transition-colors flex items-center gap-3 mx-auto"
-              >
-                <span>Start a Project</span>
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        </div>
+        {/* Removed CTA card per request */}
       </div>
     </section>
   );

@@ -189,16 +189,16 @@ const Skills = () => {
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-y-8 gap-x-6 place-items-center">
               {[
-                { name: 'HTML5', logo: 'https://cdn.simpleicons.org/html5/E34F26' },
-                { name: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-                { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
                 { name: 'React / Native', logo: 'https://cdn.simpleicons.org/react/61DAFB' },
                 { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF' },
+                { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
                 { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+                { name: 'Python', logo: 'https://cdn.simpleicons.org/python/3776AB' },
                 { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
                 { name: 'Framer', logo: 'https://cdn.simpleicons.org/framer/0055FF' },
                 { name: 'Flutter', logo: 'https://cdn.simpleicons.org/flutter/02569B' },
                 { name: 'GitHub', logo: 'https://cdn.simpleicons.org/github/FFFFFF' },
+                { name: 'Expo Go', logo: 'https://cdn.simpleicons.org/expo/FFFFFF' },
               ].map((tool) => (
                 <div key={tool.name} className="flex flex-col items-center">
                   <img
@@ -219,18 +219,7 @@ const Skills = () => {
             </div>
           </div>
         </div>
-
-        {/* Experience Highlight */}
-        <div className="mt-16 lg:mt-20 text-center">
-          <div className="rounded-2xl p-8 lg:p-12 border border-gray-800 bg-gray-800/40 max-w-4xl mx-auto">
-            <h4 className="text-xl lg:text-3xl font-bold text-white mb-4 lg:mb-6">
-              Passionate About <span className="text-amber-400">Innovation</span>
-            </h4>
-            <p className="text-gray-300 text-base lg:text-xl leading-relaxed">
-              Every project is a chance to push boundaries and ship better experiences.
-            </p>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

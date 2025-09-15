@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Github, Linkedin, ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Github, Linkedin, ArrowRight, Mail, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
 
@@ -8,10 +8,11 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    subject: 'Message via Portfolio',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{ [k: string]: string }>({});
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,11 +25,20 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate form data
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+    // Inline validation
+    const newErrors: { [k: string]: string } = {};
+    if (!formData.name.trim()) newErrors.name = 'Please enter your name';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) newErrors.email = 'Please enter your email';
+    else if (!emailRegex.test(formData.email)) newErrors.email = 'Enter a valid email address';
+    // Subject is implicit; keep default value
+    if (!formData.message.trim()) newErrors.message = 'Please write a short message';
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
       toast({
-        title: "Validation Error",
-        description: "Please fill in all fields before sending.",
+        title: "Please fix the highlighted fields",
+        description: "Some details look missing or invalid.",
         variant: "destructive",
       });
       return;
@@ -88,102 +98,18 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-[#0b0b0b]">
       <div className="container mx-auto max-w-6xl px-6">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">
-            Get In <span className="text-amber-400">Touch</span>
-          </h2>
-          <p className="text-gray-400 text-base lg:text-lg max-w-3xl mx-auto">
-            Ready to start your next project? Let's bring your ideas to life.
-          </p>
+        <div className="mb-12 lg:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white">Let's Connect!</h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-gray-800 border border-gray-800 p-8 rounded-2xl">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">Let's Connect</h3>
-              <p className="text-gray-300 mb-6 lg:mb-8 leading-relaxed">
-                I'm open to new opportunities, collaborations, or a quick chat about design and development.
-              </p>
-
-              {/* Contact Details */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-800">
-                  <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-amber-400" />
-                  </div>
+          {/* Contact Form - left */}
+          <div className="order-1">
+            <div className="p-2">
+              <h3 className="text-white font-semibold mb-4">Message Me</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <h4 className="text-white font-semibold text-base">Email</h4>
-                    <a 
-                      href="mailto:ashishgowdamj@gmail.com"
-                      className="text-gray-300 hover:text-amber-400 transition-colors"
-                    >
-                      ashishgowdamj@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-800">
-                  <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-amber-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold text-base">Phone</h4>
-                    <a 
-                      href="tel:+916362032496"
-                      className="text-gray-300 hover:text-amber-400 transition-colors"
-                    >
-                      +91 6362032496
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-4 rounded-xl border border-gray-800 bg-gray-800">
-                  <div className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-amber-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold text-base">Location</h4>
-                    <p className="text-gray-300">Karnataka, India</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-6 pt-6 border-t border-gray-700/50">
-                <h4 className="text-white font-semibold mb-4">Follow Me</h4>
-                <div className="flex gap-3">
-                  <a
-                    href="https://github.com/ashishgowdamj"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-xl border border-gray-800 bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-                  >
-                    <Github className="w-6 h-6 text-gray-300" />
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/ashishgowdamj"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-xl border border-gray-800 bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition-colors"
-                  >
-                    <Linkedin className="w-6 h-6 text-gray-300" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div>
-            <div className="bg-gray-800 border border-gray-800 p-8 rounded-2xl">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-6">Send Me a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-300 font-semibold mb-2">
-                      Name
-                    </label>
                     <input
                       type="text"
                       id="name"
@@ -192,14 +118,15 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       disabled={isSubmitting}
-                      className="w-full bg-gray-800 border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-400 transition-colors disabled:opacity-50"
-                      placeholder="Your Name"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
+                      autoComplete="name"
+                      className={`w-full bg-[#1a1a1a] border rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/60 transition disabled:opacity-50 ${errors.name ? 'border-red-500' : 'border-[#2a2a2a]'}`}
+                      placeholder="Name"
                     />
+                    {errors.name && <p id="name-error" className="mt-1 text-xs text-red-400">{errors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-gray-300 font-semibold mb-2">
-                      Email
-                    </label>
                     <input
                       type="email"
                       id="email"
@@ -208,55 +135,67 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       disabled={isSubmitting}
-                      className="w-full bg-gray-800 border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors disabled:opacity-50"
-                      placeholder="your.email@example.com"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'email-error' : 'email-help'}
+                      autoComplete="email"
+                      className={`w-full bg-[#1a1a1a] border rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/60 transition disabled:opacity-50 ${errors.email ? 'border-red-500' : 'border-[#2a2a2a]'}`}
+                      placeholder="Email"
                     />
+                    <div className="mt-1 text-xs text-gray-500" id="email-help">I'll never share your email.</div>
+                    {errors.email && <p id="email-error" className="mt-1 text-xs text-red-400">{errors.email}</p>}
                   </div>
                 </div>
-
                 <div>
-                  <label htmlFor="subject" className="block text-gray-300 font-semibold mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full bg-gray-800 border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors disabled:opacity-50"
-                    placeholder="Project Discussion"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-gray-300 font-semibold mb-2">
-                    Message
-                  </label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
+                    rows={8}
                     disabled={isSubmitting}
-                    className="w-full bg-gray-800 border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-400 transition-colors resize-none disabled:opacity-50"
-                    placeholder="Tell me about your project..."
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    className={`w-full bg-[#1a1a1a] border rounded-xl px-4 py-3 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400/60 transition resize-y disabled:opacity-50 ${errors.message ? 'border-red-500' : 'border-[#2a2a2a]'}`}
+                    placeholder="Message"
                   />
+                  {errors.message && <p id="message-error" className="mt-1 text-xs text-red-400">{errors.message}</p>}
                 </div>
-
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-amber-400 text-black font-semibold py-3 rounded-lg hover:bg-amber-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-md"
                 >
                   <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
               </form>
+            </div>
+          </div>
+
+          {/* Contact Information - right */}
+          <div className="order-2">
+            <div className="p-2">
+              <h4 className="text-gray-300 font-semibold mb-3">Contact</h4>
+              <div className="space-y-3 text-gray-300 text-sm mb-8">
+                <a href="mailto:ashishgowdamj@gmail.com" className="flex items-center gap-3 hover:text-amber-400">
+                  <Mail className="w-4 h-4" />
+                  ashishgowdamj@gmail.com
+                </a>
+                <a href="tel:+916362032496" className="flex items-center gap-3 hover:text-amber-400">
+                  <Phone className="w-4 h-4" />
+                  +91 63620 32496
+                </a>
+              </div>
+              <h4 className="text-gray-300 font-semibold mb-3">Social Media</h4>
+              <div className="space-y-2 text-gray-300 text-sm">
+                <a href="https://x.com/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400">
+                  <img src="https://cdn.simpleicons.org/x/FFFFFF" alt="X" className="w-4 h-4" />
+                  X
+                </a>
+                <a href="https://linkedin.com/in/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400"><Linkedin className="w-4 h-4" />LinkedIn</a>
+                <a href="https://github.com/ashishgowdamj" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-amber-400"><Github className="w-4 h-4" />GitHub</a>
+              </div>
             </div>
           </div>
         </div>
