@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { projects } from '@/lib/projects';
 
 const Portfolio = () => {
@@ -9,9 +9,7 @@ const Portfolio = () => {
     }
   };
 
-  const handleLinkedInClick = () => {
-    window.open('https://www.linkedin.com/in/ashishgowdamj', '_blank', 'noopener,noreferrer');
-  };
+  // Removed GitHub view button as requested
 
   const handleStartProjectClick = () => {
     const contactSection = document.getElementById('contact');
@@ -24,7 +22,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-16 bg-[#0b0b0b]">
+    <section id="portfolio" className="py-20 bg-[#0b0b0b]">
       <div className="container mx-auto px-6">
         {/* Enhanced Header with Staggered Animation */}
         <div className="text-center mb-12 space-y-3">
@@ -86,7 +84,7 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex">
                   <button 
                     onClick={() => handleProjectClick(project.link)}
                     disabled={!project.link}
@@ -98,14 +96,6 @@ const Portfolio = () => {
                   >
                     <ExternalLink className="w-3 h-3" />
                     <span className="relative z-10">{project.link ? 'View' : 'Soon'}</span>
-                  </button>
-                  
-                  <button 
-                    onClick={handleLinkedInClick}
-                    className="bg-gray-800 text-white p-2 rounded-lg hover:border-amber-400 transition-colors border border-gray-800"
-                    title="View on GitHub"
-                  >
-                    <Github className="w-4 h-4" />
                   </button>
                 </div>
               </div>
