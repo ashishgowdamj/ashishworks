@@ -3,6 +3,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Navbar morph water animation */
+@keyframes nav-water {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.45;
+    filter: blur(8px);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.6;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+    filter: blur(14px);
+  }
+}
+
+.nav-morph-blob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+.animate-nav-water {
+  animation: nav-water 700ms ease-out forwards;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

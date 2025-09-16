@@ -4,6 +4,7 @@ import { Home, FileText, Briefcase, Wrench, Link as LinkIcon } from 'lucide-reac
 const BottomNav: React.FC = () => {
   const [active, setActive] = useState<string>('home');
   const [showRightBar, setShowRightBar] = useState<boolean>(false);
+  const [showMorph, setShowMorph] = useState<boolean>(false);
   const [footerVisible, setFooterVisible] = useState<boolean>(false);
 
   useEffect(() => {
@@ -65,8 +66,26 @@ const BottomNav: React.FC = () => {
 
   const isRightBar = showRightBar;
 
+  // Trigger a short water-like morph animation when the right bar appears
+  useEffect(() => {
+    if (isRightBar) {
+      setShowMorph(true);
+      const t = window.setTimeout(() => setShowMorph(false), 750);
+      return () => window.clearTimeout(t);
+    }
+  }, [isRightBar]);
+
   return (
     <>
+      {/* Water morph animation when switching to right bar */}
+      {showMorph && (
+        <>
+          {/* From bottom pill */}
+          <div aria-hidden className="nav-morph-blob animate-nav-water fixed left-1/2 bottom-10 z-[45]" />
+          {/* To right bar */}
+          <div aria-hidden className="nav-morph-blob animate-nav-water fixed right-6 top-1/2 -translate-y-1/2 z-[45]" />
+        </>
+      )}
       {/* Bottom pill (render only when right bar is not active) */}
       {!isRightBar && (
         <div className={`fixed left-0 right-0 bottom-4 z-50 pointer-events-none transition-all duration-500 ease-out`}>
@@ -99,36 +118,36 @@ const BottomNav: React.FC = () => {
 
       {/* Right-side vertical icons (cross-fade in on Projects after delay) */}
       <div className={`fixed right-4 top-1/2 -translate-y-1/2 z-50 transition-all duration-500 ease-out ${isRightBar ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 translate-x-2 pointer-events-none'}`}>
-        <div className="flex flex-col bg-[#171717]/90 supports-[backdrop-filter]:backdrop-blur border border-white/10 rounded-2xl p-2 items-center gap-2 shadow-lg ring-1 ring-white/5">
+        <div className="flex flex-col bg-[#171717]/90 supports-[backdrop-filter]:backdrop-blur border border-white/10 rounded-2xl p-3 items-center gap-3 shadow-lg ring-1 ring-white/5">
           <div className="relative group">
-            <button aria-label="Home" onClick={() => scrollTo('home')} className="p-2 rounded-xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
-              <Home className="w-5 h-5" />
+            <button aria-label="Home" onClick={() => scrollTo('home')} className="p-3 rounded-2xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
+              <Home className="w-6 h-6" />
             </button>
-            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-xs bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Home</span>
+            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-sm bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Home</span>
           </div>
           <div className="relative group">
-            <button aria-label="About" onClick={() => scrollTo('about')} className="p-2 rounded-xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
-              <FileText className="w-5 h-5" />
+            <button aria-label="About" onClick={() => scrollTo('about')} className="p-3 rounded-2xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
+              <FileText className="w-6 h-6" />
             </button>
-            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-xs bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">About</span>
+            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-sm bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">About</span>
           </div>
           <div className="relative group">
-            <button aria-label="Skills" onClick={() => scrollTo('skills')} className="p-2 rounded-xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
-              <Wrench className="w-5 h-5" />
+            <button aria-label="Skills" onClick={() => scrollTo('skills')} className="p-3 rounded-2xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
+              <Wrench className="w-6 h-6" />
             </button>
-            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-xs bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Skills</span>
+            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-sm bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Skills</span>
           </div>
           <div className="relative group">
-            <button aria-label="Services" onClick={() => scrollTo('services')} className="p-2 rounded-xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
-              <Briefcase className="w-5 h-5" />
+            <button aria-label="Services" onClick={() => scrollTo('services')} className="p-3 rounded-2xl text-white hover:bg-[#1f1f1f] transition-transform duration-200 hover:scale-110">
+              <Briefcase className="w-6 h-6" />
             </button>
-            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-xs bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Services</span>
+            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-sm bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Services</span>
           </div>
           <div className="relative group">
-            <button aria-label="Projects" onClick={() => scrollTo('portfolio')} className="p-2 rounded-xl bg-white text-black transition-transform duration-200 hover:scale-110">
-              <LinkIcon className="w-5 h-5" />
+            <button aria-label="Projects" onClick={() => scrollTo('portfolio')} className="p-3 rounded-2xl bg-white text-black transition-transform duration-200 hover:scale-110">
+              <LinkIcon className="w-6 h-6" />
             </button>
-            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-xs bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Projects</span>
+            <span className="absolute right-full top-1/2 -translate-y-1/2 mr-2 whitespace-nowrap text-sm bg-white text-black px-2 py-1 rounded-md shadow opacity-0 pointer-events-none group-hover:opacity-100 transition">Projects</span>
           </div>
         </div>
       </div>
