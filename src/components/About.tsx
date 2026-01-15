@@ -18,8 +18,8 @@ const About = () => {
             <div className="bg-gray-800 border border-gray-800 p-6 lg:p-8 rounded-2xl">
               <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">My Story</h3>
               <p className="text-gray-300 leading-relaxed mb-4 text-sm lg:text-base">
-              I’m Ashish Gowda M J, a passionate Front-End Developer and App Developer with a Bachelor of Computer Applications (BCA) degree.
-              My journey has been driven by building real-world applications that combine clean code, responsive design, and user-friendly functionality.
+              I'm Ashish Gowda M J, a passionate Full Stack Developer and AI Enthusiast with a Bachelor of Computer Applications (BCA) degree.
+              My journey has been driven by building real-world applications with AI integration, leveraging modern technologies, clean code, responsive design, and user-friendly functionality.
               I enjoy creating web applications using React.js, Next.js, and Firebase, as well as developing mobile apps with Flutter and Android Studio. My projects include live business websites, interactive learning platforms, and Android apps development skills.
               </p>
               <p className="text-gray-300 leading-relaxed text-sm lg:text-base">

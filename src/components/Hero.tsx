@@ -12,7 +12,7 @@ const Hero = () => {
   const handleDownloadCV = () => {
     const resumeContent = `
 ASHISH GOWDA M J
-Front-End Developer & UI/UX Designer 
+Full Stack Developer & AI Enthusiast 
 
 Contact:
 Email: ashishgowdamj@gmail.com
@@ -69,7 +69,7 @@ Passionate about creating exceptional digital experiences with user-centered des
         {/* Headings */}
         <div>
           <p className="text-amber-400 font-semibold tracking-wider uppercase text-xs sm:text-sm mb-4">
-            Front–End Developer & UX/UI Designer
+            Full Stack Developer & AI Enthusiast
           </p>
           <h1 className="text-white text-3xl sm:text-5xl lg:text-7xl font-extrabold mb-4 leading-tight">
             Ashish Gowda M J
@@ -104,8 +104,8 @@ Passionate about creating exceptional digital experiences with user-centered des
         <div className="max-w-3xl text-gray-300 space-y-4 text-base sm:text-lg leading-relaxed">
           <div className="space-y-4">
             <p>
-              I’m Ashish Gowda M J, a passionate Front-End Developer and App Developer with a Bachelor of Computer Applications (BCA) degree.
-              My journey has been driven by building real-world applications that combine clean code, responsive design, and user-friendly functionality.
+              I'm Ashish Gowda M J, a passionate Full Stack Developer and AI Enthusiast with a Bachelor of Computer Applications (BCA) degree.
+              My journey has been driven by building real-world applications with AI integration, clean code, responsive design, and user-friendly functionality.
             </p>
             <p>
               I enjoy creating web applications using React.js, Next.js, Firebase and Supabase, as well as developing mobile apps with React Native, Flutter and Android Studio

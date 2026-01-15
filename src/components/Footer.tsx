@@ -19,7 +19,7 @@ const Footer = () => {
               Ashish Gowda M J
             </div>
             <p className="text-gray-400 max-w-md">
-              Front–End Developer & UX/UI Designer
+              Full Stack Developer & AI Enthusiast
             </p>
             <div className="mt-3 space-y-2">
               <a href="mailto:ashishgowdamj@gmail.com" className="flex items-center gap-3 text-gray-300 hover:text-amber-400 text-sm">
