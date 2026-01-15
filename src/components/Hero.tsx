@@ -10,43 +10,13 @@ const Hero = () => {
   };
 
   const handleDownloadCV = () => {
-    const resumeContent = `
-ASHISH GOWDA M J
-Full Stack Developer & AI Enthusiast 
-
-Contact:
-Email: ashishgowdamj@gmail.com
-Phone: +91 6362032496
-Location: Karnataka, India
-LinkedIn: https://linkedin.com/in/ashishgowdamj
-GitHub: https://github.com/ashishgowdamj
-
-Education:
-BCA Graduate
-
-Skills:
-- Web Development
-- App Development
-- React.js Development
-- Front-End Development
-- Modern CSS & JavaScript
-- Responsive Web Design
-- UI/UX Design
-- Figma & Design Tools
-
-Experience:
-Passionate about creating exceptional digital experiences with user-centered design and modern development practices.
-    `.trim();
-
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Ashish_Gowda_Resume.txt';
+    link.href = '/ashishworks/Ashish Gowda MJ Resume.pdf';
+    link.download = 'Ashish_Gowda_MJ_Resume.pdf';
+    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    URL.revokeObjectURL(url);
   };
 
   return (
