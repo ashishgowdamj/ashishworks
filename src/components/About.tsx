@@ -30,6 +30,30 @@ const About = () => {
             </div>
 
             <div className="bg-gray-800 border border-gray-800 p-6 lg:p-8 rounded-2xl">
+              <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">Professional Experience</h3>
+              <div className="space-y-4">
+                <div className="border-l-4 border-amber-500 pl-4 pb-4">
+                  <h4 className="text-lg lg:text-xl font-semibold text-white">Full Stack Developer</h4>
+                  <p className="text-amber-400 font-medium">Ideafloats Technologies</p>
+                  <p className="text-gray-400 text-sm lg:text-base mb-2">2 months</p>
+                  <p className="text-gray-300 text-sm lg:text-base">
+                    Developed full-stack applications using modern web technologies, implemented responsive designs, 
+                    and integrated front-end and back-end systems.
+                  </p>
+                </div>
+                <div className="border-l-4 border-amber-500 pl-4">
+                  <h4 className="text-lg lg:text-xl font-semibold text-white">UI/UX Designer</h4>
+                  <p className="text-amber-400 font-medium">Ideafloats Technologies</p>
+                  <p className="text-gray-400 text-sm lg:text-base mb-2">3 months</p>
+                  <p className="text-gray-300 text-sm lg:text-base">
+                    Designed user-centered interfaces, created wireframes and prototypes, and collaborated 
+                    with developers to deliver intuitive user experiences.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-800 border border-gray-800 p-6 lg:p-8 rounded-2xl">
               <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">Education & Growth</h3>
               <div className="space-y-4">
                 <div className="border-l-4 border-amber-500 pl-4">
@@ -54,10 +78,13 @@ const About = () => {
                 <div className="text-gray-300 text-sm lg:text-base">Projects</div>
               </div>
               <div className="bg-gray-800 border border-gray-800 p-4 lg:p-6 rounded-2xl text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">5</div>
+                <div className="text-gray-300 text-sm lg:text-base">Months Experience</div>
+              </div>
+              <div className="bg-gray-800 border border-gray-800 p-4 lg:p-6 rounded-2xl text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">2+</div>
                 <div className="text-gray-300 text-sm lg:text-base">Years Learning</div>
               </div>
-              
               <div className="bg-gray-800 border border-gray-800 p-4 lg:p-6 rounded-2xl text-center">
                 <div className="text-2xl lg:text-3xl font-bold text-amber-400 mb-2">∞</div>
                 <div className="text-gray-300 text-sm lg:text-base">Passion</div>
