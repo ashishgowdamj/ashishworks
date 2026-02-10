@@ -11,7 +11,7 @@ const Hero = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement('a');
-    link.href = '/ashishworks/Ashish Gowda MJ Resume.pdf';
+    link.href = '/Ashish Gowda MJ Resume.pdf';
     link.download = 'Ashish_Gowda_MJ_Resume.pdf';
     link.target = '_blank';
     document.body.appendChild(link);
