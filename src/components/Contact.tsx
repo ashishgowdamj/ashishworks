@@ -1,18 +1,27 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Github, Linkedin, ArrowRight, Mail, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
+import {
+  FIELD_LIMITS,
+  checkRateLimit,
+  isSubmittedTooFast,
+  recordSubmission,
+  validateContactForm,
+} from '@/lib/contactSecurity';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: 'Message via Portfolio',
-    message: ''
+    message: '',
+    website: '', // honeypot
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
+  const formOpenedAt = useRef(Date.now());
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,18 +33,31 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Inline validation
-    const newErrors: { [k: string]: string } = {};
-    if (!formData.name.trim()) newErrors.name = 'Please enter your name';
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!formData.email.trim()) newErrors.email = 'Please enter your email';
-    else if (!emailRegex.test(formData.email)) newErrors.email = 'Enter a valid email address';
-    // Subject is implicit; keep default value
-    if (!formData.message.trim()) newErrors.message = 'Please write a short message';
 
-    setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) {
+    // Honeypot / timing: silent success for bots
+    if (formData.website || isSubmittedTooFast(formOpenedAt.current)) {
+      toast({
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      setFormData({ name: '', email: '', subject: 'Message via Portfolio', message: '', website: '' });
+      formOpenedAt.current = Date.now();
+      return;
+    }
+
+    const rate = checkRateLimit();
+    if (!rate.allowed) {
+      toast({
+        title: "Too many messages",
+        description: `Please wait about ${rate.retryAfterMinutes} minute(s) before sending again.`,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const validation = validateContactForm(formData);
+    if (!validation.success) {
+      setErrors(validation.errors);
       toast({
         title: "Please fix the highlighted fields",
         description: "Some details look missing or invalid.",
@@ -44,42 +66,37 @@ const Contact = () => {
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
-    console.log('Starting email send process...');
-    console.log('Form data:', formData);
 
     try {
-      // Initialize EmailJS with updated public key
       emailjs.init('d0agYK3ZKBPM89hYY');
-      
+
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
+        from_name: validation.data.name,
+        from_email: validation.data.email,
+        subject: validation.data.subject,
+        message: validation.data.message,
         to_name: 'Ashish',
-        reply_to: formData.email,
+        reply_to: validation.data.email,
       };
 
-      console.log('Sending email with params:', templateParams);
-
       const result = await emailjs.send(
-        'service_96qciat', // Updated Service ID
-        'template_bjeq1dx', // Updated Template ID
+        'service_96qciat',
+        'template_bjeq1dx',
         templateParams,
-        'd0agYK3ZKBPM89hYY' // Updated Public Key
+        'd0agYK3ZKBPM89hYY'
       );
 
-      console.log('EmailJS result:', result);
-
       if (result.status === 200) {
+        recordSubmission();
         toast({
           title: "Message sent successfully!",
           description: "Thank you for your message. I'll get back to you soon.",
         });
 
-        // Reset form
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: 'Message via Portfolio', message: '', website: '' });
+        formOpenedAt.current = Date.now();
       } else {
         throw new Error(`EmailJS returned status: ${result.status}`);
       }
@@ -107,7 +124,23 @@ const Contact = () => {
           <div className="order-1">
             <div className="p-2">
               <h3 className="text-white font-semibold mb-4">Message Me</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                {/* Honeypot field — hidden from users */}
+                <div
+                  aria-hidden="true"
+                  style={{ position: 'absolute', left: '-9999px', top: '-9999px', height: 0, width: 0, overflow: 'hidden' }}
+                >
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <input
@@ -117,6 +150,7 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      maxLength={FIELD_LIMITS.name}
                       disabled={isSubmitting}
                       aria-invalid={!!errors.name}
                       aria-describedby={errors.name ? 'name-error' : undefined}
@@ -134,6 +168,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      maxLength={FIELD_LIMITS.email}
                       disabled={isSubmitting}
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? 'email-error' : 'email-help'}
@@ -153,6 +188,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={8}
+                    maxLength={FIELD_LIMITS.message}
                     disabled={isSubmitting}
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? 'message-error' : undefined}
