@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Github, Linkedin, ArrowRight, Mail, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
+import { EMAILJS } from '@/lib/emailjs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -44,13 +45,21 @@ const Contact = () => {
       return;
     }
 
+    if (!EMAILJS.publicKey || !EMAILJS.serviceId || !EMAILJS.templateId) {
+      toast({
+        title: "Contact form is not configured",
+        description: "Email service credentials are missing. Please contact me directly via email.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     console.log('Starting email send process...');
     console.log('Form data:', formData);
 
     try {
-      // Initialize EmailJS with updated public key
-      emailjs.init('d0agYK3ZKBPM89hYY');
+      emailjs.init(EMAILJS.publicKey);
       
       const templateParams = {
         from_name: formData.name,
@@ -64,10 +73,10 @@ const Contact = () => {
       console.log('Sending email with params:', templateParams);
 
       const result = await emailjs.send(
-        'service_96qciat', // Updated Service ID
-        'template_bjeq1dx', // Updated Template ID
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
         templateParams,
-        'd0agYK3ZKBPM89hYY' // Updated Public Key
+        EMAILJS.publicKey
       );
 
       console.log('EmailJS result:', result);

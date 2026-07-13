@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
+import { EMAILJS } from '@/lib/emailjs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -35,10 +36,19 @@ const Contact = () => {
       return;
     }
 
+    if (!EMAILJS.publicKey || !EMAILJS.serviceId || !EMAILJS.templateId) {
+      toast({
+        title: "Contact form is not configured",
+        description: "Email service credentials are missing. Please contact me directly via email.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      emailjs.init('d0agYK3ZKBPM89hYY');
+      emailjs.init(EMAILJS.publicKey);
       
       const templateParams = {
         from_name: formData.name,
@@ -50,10 +60,10 @@ const Contact = () => {
       };
 
       const result = await emailjs.send(
-        'service_96qciat',
-        'template_bjeq1dx',
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
         templateParams,
-        'd0agYK3ZKBPM89hYY'
+        EMAILJS.publicKey
       );
 
       if (result.status === 200) {
