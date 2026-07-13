@@ -1,19 +1,29 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { useToast } from "@/hooks/use-toast";
+import {
+  FIELD_LIMITS,
+  checkRateLimit,
+  isSubmittedTooFast,
+  recordSubmission,
+  validateContactForm,
+} from '@/lib/contactSecurity';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    website: '', // honeypot
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<{ [k: string]: string }>({});
+  const formOpenedAt = useRef(Date.now());
   const { toast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,28 +35,52 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+
+    // Honeypot / timing: silent success for bots
+    if (formData.website || isSubmittedTooFast(formOpenedAt.current)) {
       toast({
-        title: "Validation Error",
-        description: "Please fill in all fields before sending.",
+        title: "Message sent successfully!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
+      formOpenedAt.current = Date.now();
+      return;
+    }
+
+    const rate = checkRateLimit();
+    if (!rate.allowed) {
+      toast({
+        title: "Too many messages",
+        description: `Please wait about ${rate.retryAfterMinutes} minute(s) before sending again.`,
         variant: "destructive",
       });
       return;
     }
 
+    const validation = validateContactForm(formData);
+    if (!validation.success) {
+      setErrors(validation.errors);
+      toast({
+        title: "Validation Error",
+        description: "Please fill in all fields correctly before sending.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setErrors({});
     setIsSubmitting(true);
 
     try {
       emailjs.init('d0agYK3ZKBPM89hYY');
-      
+
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
+        from_name: validation.data.name,
+        from_email: validation.data.email,
+        subject: validation.data.subject,
+        message: validation.data.message,
         to_name: 'Ashish',
-        reply_to: formData.email,
+        reply_to: validation.data.email,
       };
 
       const result = await emailjs.send(
@@ -57,11 +91,13 @@ const Contact = () => {
       );
 
       if (result.status === 200) {
+        recordSubmission();
         toast({
           title: "Message sent successfully!",
           description: "Thank you for your message. I'll get back to you soon.",
         });
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', website: '' });
+        formOpenedAt.current = Date.now();
       }
     } catch (error) {
       toast({
@@ -175,7 +211,23 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-gray-50 rounded-3xl p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Me a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+                {/* Honeypot field — hidden from users */}
+                <div
+                  aria-hidden="true"
+                  style={{ position: 'absolute', left: '-9999px', top: '-9999px', height: 0, width: 0, overflow: 'hidden' }}
+                >
+                  <label htmlFor="contact-website">Website</label>
+                  <input
+                    type="text"
+                    id="contact-website"
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
@@ -188,10 +240,13 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
+                      maxLength={FIELD_LIMITS.name}
                       disabled={isSubmitting}
-                      className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
+                      aria-invalid={!!errors.name}
+                      className={`w-full bg-white border rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
                       placeholder="Your Name"
                     />
+                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
@@ -204,10 +259,13 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      maxLength={FIELD_LIMITS.email}
                       disabled={isSubmitting}
-                      className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
+                      aria-invalid={!!errors.email}
+                      className={`w-full bg-white border rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                       placeholder="your.email@example.com"
                     />
+                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
                   </div>
                 </div>
 
@@ -222,10 +280,13 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
+                    maxLength={FIELD_LIMITS.subject}
                     disabled={isSubmitting}
-                    className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50"
+                    aria-invalid={!!errors.subject}
+                    className={`w-full bg-white border rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 disabled:opacity-50 ${errors.subject ? 'border-red-500' : 'border-gray-300'}`}
                     placeholder="Project Discussion"
                   />
+                  {errors.subject && <p className="mt-1 text-xs text-red-500">{errors.subject}</p>}
                 </div>
 
                 <div>
@@ -239,10 +300,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={6}
+                    maxLength={FIELD_LIMITS.message}
                     disabled={isSubmitting}
-                    className="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50"
+                    aria-invalid={!!errors.message}
+                    className={`w-full bg-white border rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none disabled:opacity-50 ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
                     placeholder="Tell me about your project..."
                   />
+                  {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
                 </div>
 
                 <button
