@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, ChevronRight, Folder } from 'lucide-react';
 import { projects, type Project, type ProjectStatus } from '@/lib/projects';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Mono, SectionBar, Tag } from './primitives';
+import { CountUp, EASE, Reveal } from './motion';
 
 const STATUS_TAG: Record<ProjectStatus, { label: string; tone: 'accent' | 'info' | 'neutral' }> = {
   live: { label: 'live', tone: 'accent' },
@@ -34,7 +36,7 @@ const Detail = ({ project }: { project: Project }) => (
         {project.metrics.map((m) => (
           <div key={m.label}>
             <p className="text-[15px] font-semibold" style={{ color: 'var(--v2-text)' }}>
-              {m.value}
+              <CountUp value={m.value} />
             </p>
             <Mono dim>{m.label}</Mono>
           </div>
@@ -84,6 +86,7 @@ const Detail = ({ project }: { project: Project }) => (
 
 const WorkRow = ({ project }: { project: Project }) => {
   const [open, setOpen] = useState(false);
+  const reduced = useReducedMotion();
   const status = STATUS_TAG[project.status];
 
   return (
@@ -117,7 +120,20 @@ const WorkRow = ({ project }: { project: Project }) => {
         </span>
       </button>
 
-      {open && <Detail project={project} />}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="detail"
+            initial={reduced ? false : { height: 0, opacity: 0 }}
+            animate={reduced ? undefined : { height: 'auto', opacity: 1 }}
+            exit={reduced ? undefined : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.38, ease: EASE }}
+            style={{ overflow: 'hidden' }}
+          >
+            <Detail project={project} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -145,8 +161,10 @@ const WorkList = () => {
 
           {projects
             .filter((p) => p.year === year)
-            .map((project) => (
-              <WorkRow key={project.title} project={project} />
+            .map((project, i) => (
+              <Reveal key={project.title} delay={i * 0.04}>
+                <WorkRow project={project} />
+              </Reveal>
             ))}
         </div>
       ))}

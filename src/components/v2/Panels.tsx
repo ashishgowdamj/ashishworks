@@ -10,15 +10,18 @@ import {
   courses,
   now,
 } from '@/lib/content';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Mono, SectionBar, Tag } from './primitives';
+import { EASE, Reveal } from './motion';
 
 const rowBorder = { borderBottom: '1px solid var(--v2-line-soft)' };
 
 export const NowPanel = () => (
   <>
     <SectionBar title="Now" id="now" action={<Mono dim>{now.updated}</Mono>} />
-    {now.items.map((item) => (
-      <div key={item.title} className="px-5 py-3" style={rowBorder}>
+    {now.items.map((item, i) => (
+      <Reveal key={item.title} delay={i * 0.05}>
+      <div className="px-5 py-3" style={rowBorder}>
         <div className="flex items-center gap-2 mb-1">
           <span
             className="w-1.5 h-1.5 rounded-full shrink-0"
@@ -32,6 +35,7 @@ export const NowPanel = () => (
           {item.detail}
         </p>
       </div>
+      </Reveal>
     ))}
   </>
 );
@@ -39,8 +43,9 @@ export const NowPanel = () => (
 export const ExperiencePanel = () => (
   <>
     <SectionBar title="Experience" id="about" />
-    {experience.map((role) => (
-      <div key={`${role.company}-${role.title}`} className="px-5 py-3.5" style={rowBorder}>
+    {experience.map((role, i) => (
+      <Reveal key={`${role.company}-${role.title}`} delay={i * 0.06}>
+      <div className="px-5 py-3.5" style={rowBorder}>
         <div className="flex items-baseline justify-between gap-3 mb-1">
           <span className="text-[13px] font-semibold" style={{ color: 'var(--v2-text)' }}>
             {role.title}
@@ -59,6 +64,7 @@ export const ExperiencePanel = () => (
           {role.detail}
         </p>
       </div>
+      </Reveal>
     ))}
   </>
 );
@@ -96,8 +102,9 @@ export const StackPanel = () => (
 export const ProcessPanel = () => (
   <>
     <SectionBar title="How I work" id="process" />
-    {process.map((item) => (
-      <div key={item.step} className="px-5 py-3 flex gap-4" style={rowBorder}>
+    {process.map((item, i) => (
+      <Reveal key={item.step} delay={i * 0.05}>
+      <div className="px-5 py-3 flex gap-4" style={rowBorder}>
         <Mono dim className="shrink-0 pt-0.5">
           {item.step}
         </Mono>
@@ -110,6 +117,7 @@ export const ProcessPanel = () => (
           </p>
         </div>
       </div>
+      </Reveal>
     ))}
   </>
 );
@@ -141,6 +149,7 @@ export const ServicesPanel = () => (
 
 export const FaqPanel = () => {
   const [open, setOpen] = useState<number | null>(null);
+  const reduced = useReducedMotion();
   return (
     <>
       <SectionBar title="Questions" id="faq" />
@@ -165,14 +174,25 @@ export const FaqPanel = () => {
                 {faq.q}
               </span>
             </button>
-            {isOpen && (
-              <p
-                className="text-[12.5px] leading-relaxed px-5 pb-3 pl-[2.9rem]"
-                style={{ color: 'var(--v2-muted)' }}
-              >
-                {faq.a}
-              </p>
-            )}
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div
+                  key="answer"
+                  initial={reduced ? false : { height: 0, opacity: 0 }}
+                  animate={reduced ? undefined : { height: 'auto', opacity: 1 }}
+                  exit={reduced ? undefined : { height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <p
+                    className="text-[12.5px] leading-relaxed px-5 pb-3 pl-[2.9rem]"
+                    style={{ color: 'var(--v2-muted)' }}
+                  >
+                    {faq.a}
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         );
       })}
