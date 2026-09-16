@@ -3,8 +3,15 @@ export type Metric = {
   label: string;
 };
 
+export type ProjectStatus = 'live' | 'internal' | 'personal';
+
 export type Project = {
   title: string;
+  /** Four or five words. What shows in the dense list. */
+  short: string;
+  /** Domain label, shown as monospace metadata. */
+  domain: string;
+  status: ProjectStatus;
   /** One specific line. What it is, not what category it belongs to. */
   tagline: string;
   /** The situation that made the project necessary. */
@@ -25,6 +32,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "FleetTrack",
+    short: "Fleet tracking & telematics",
+    domain: "Real-time",
+    status: "internal",
     tagline: "Real-time tracking console for a live vehicle fleet.",
     problem:
       "Fleet operators were working from stale position reports. By the time a vehicle drifted off route or idled too long, the window to act had already closed.",
@@ -42,6 +52,9 @@ export const projects: Project[] = [
   },
   {
     title: "Offers Unlimited",
+    short: "Deals discovery app + admin",
+    domain: "Mobile",
+    status: "internal",
     tagline: "Deals discovery app, plus the admin portal that feeds it.",
     problem:
       "Retail offers live in paper flyers and scattered posts. Shoppers cannot search them, and the businesses running them have no way to publish at any scale.",
@@ -58,7 +71,10 @@ export const projects: Project[] = [
     image: "/work/offers-unlimited-dashboard.png",
   },
   {
-    title: "Enterprise Analytics Dashboard",
+    title: "Analytics",
+    short: "Enterprise reporting dashboard",
+    domain: "Data",
+    status: "internal",
     tagline: "Search, filter and report across large operational datasets.",
     problem:
       "The data existed but nobody could interrogate it. Answering a routine question meant asking someone to write SQL and waiting.",
@@ -70,6 +86,9 @@ export const projects: Project[] = [
   },
   {
     title: "TraceLink",
+    short: "Supply-chain asset tracking",
+    domain: "Logistics",
+    status: "internal",
     tagline: "Asset tracking across multi-warehouse supply chains.",
     problem:
       "Warehouse floors have poor connectivity, but compliance still demands an unbroken audit trail. A scanner that only works online is a scanner that loses records.",
@@ -80,7 +99,10 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    title: "NavTools — GPS Simulator & Record/Replay",
+    title: "NavTools",
+    short: "GPS simulator & record/replay",
+    domain: "Tooling",
+    status: "internal",
     tagline: "Field-test GPS behaviour without going to the field.",
     problem:
       "Testing location features meant physically driving routes. Every code change cost hours and a tank of fuel, and a bug found at the desk could not be reproduced on demand.",
@@ -91,7 +113,10 @@ export const projects: Project[] = [
     year: "2024",
   },
   {
-    title: "Advina Solutions",
+    title: "Advina",
+    short: "Corporate site, live",
+    domain: "Web",
+    status: "live",
     tagline: "Corporate site for an electronics engineering firm.",
     problem:
       "An established engineering firm had no credible web presence, which cost them enquiries they never knew about.",
@@ -104,7 +129,10 @@ export const projects: Project[] = [
     link: "https://advina.in/",
   },
   {
-    title: "Dhanvith Ventures",
+    title: "Dhanvith",
+    short: "Company site, live",
+    domain: "Web",
+    status: "live",
     tagline: "Company site for the firm I build with.",
     problem:
       "The company needed a front door: something that presents the work clearly to prospective clients and partners.",
@@ -118,6 +146,9 @@ export const projects: Project[] = [
   },
   {
     title: "MatchPulse",
+    short: "IPL match predictor",
+    domain: "Side project",
+    status: "personal",
     tagline: "IPL match predictor. Built because I wanted to know.",
     problem:
       "A personal project. I wanted to see how far simple modelling could get on match outcomes, and to have something to argue about with friends.",

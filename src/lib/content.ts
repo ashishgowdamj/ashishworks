@@ -193,3 +193,38 @@ export const courses = [
   { name: "React.js Bootcamp", issuer: "DevTown" },
   { name: "Microsoft Power BI", issuer: "Skill Nation" },
 ];
+
+export type Role = {
+  company: string;
+  title: string;
+  period: string;
+  type: string;
+  detail: string;
+};
+
+export const experience: Role[] = [
+  {
+    company: "Dhanvith Ventures LLP",
+    title: "Software Developer",
+    period: "Nov 2025 — Present",
+    type: "Full-time",
+    detail:
+      "Web and mobile products across analytics, monitoring and business management. Frontend, database-connected applications, and shipping features through design, testing and deployment.",
+  },
+  {
+    company: "Ideafloats Technologies",
+    title: "Full Stack Developer Intern",
+    period: "Sep 2025 — Nov 2025",
+    type: "Internship",
+    detail:
+      "Healthcare platforms for digital health management. Built responsive interfaces, dashboard components and data-driven features.",
+  },
+  {
+    company: "Ideafloats Technologies",
+    title: "UI/UX Design Intern",
+    period: "Jun 2025 — Sep 2025",
+    type: "Internship",
+    detail:
+      "Wireframes, user flows and high-fidelity interfaces in Figma, then worked with developers to get them built as designed.",
+  },
+];

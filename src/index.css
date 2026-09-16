@@ -161,3 +161,61 @@
   .animate-fade-in:nth-child(4) { animation-delay: 0.4s; }
   .animate-fade-in:nth-child(5) { animation-delay: 0.5s; }
 }
+
+/* ---------------------------------------------------------------------------
+   v2 design tokens.
+   A deliberately narrow, dense, terminal-adjacent look: one framed column on a
+   dotted field, monospace for metadata, a single signal-green accent.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --v2-ink: #08080A;
+  --v2-panel: #0C0C0F;
+  --v2-panel-raised: #111116;
+  --v2-line: #1E1E24;
+  --v2-line-soft: #16161B;
+  --v2-text: #ECECEF;
+  --v2-muted: #8C8C97;
+  --v2-dim: #5B5B66;
+  --v2-accent: #4ADE80;
+  --v2-accent-dim: rgba(74, 222, 128, 0.12);
+}
+
+.v2-root {
+  background-color: var(--v2-ink);
+  color: var(--v2-text);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.v2-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Dotted field behind the column. */
+.v2-field {
+  background-image: radial-gradient(var(--v2-line) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-position: -1px -1px;
+}
+
+/* The column itself sits above the dots with its own flat surface. */
+.v2-column {
+  background-color: var(--v2-panel);
+  border-left: 1px solid var(--v2-line);
+  border-right: 1px solid var(--v2-line);
+}
+
+.v2-divide > * + * {
+  border-top: 1px solid var(--v2-line-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2-root *,
+  .v2-root *::before,
+  .v2-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
