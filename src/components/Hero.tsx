@@ -70,18 +70,29 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Intro paragraphs */}
-        <div className="max-w-3xl text-gray-300 space-y-4 text-base sm:text-lg leading-relaxed">
-          <div className="space-y-4">
-            <p>
-              I'm Ashish Gowda M J, a Software Developer with experience building real-time monitoring systems, analytics dashboards, mobile applications, and data management platforms. Skilled in front-end and product development, responsive UI design, and workflow optimization.
-            </p>
-            <p>
-              Experienced in AI-assisted development, focused on delivering solutions quickly that improve monitoring, management, and decision-making — from healthcare platforms to fleet tracking systems.
-            </p>
-          </div>
-          <p className="text-white font-bold leading-tight mt-6 sm:mt-8 md:mt-10 pt-[40px] text-[35px] sm:text-[41px] md:text-[53px]">
-            Let's build something great together!
+        {/* Intro */}
+        <div className="max-w-3xl text-gray-300 space-y-5 text-base sm:text-lg leading-relaxed">
+          <p>
+            I build production systems that people rely on every day — a console tracking
+            thousands of vehicles in real time, a mobile app and the admin portal that feeds it,
+            tooling that lets a QA team reproduce a GPS bug at a desk instead of on a road.
+          </p>
+          <p>
+            Most of my work lives behind a login at{' '}
+            <a
+              href="https://www.dhanvith-ventures.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 hover:text-amber-300 underline underline-offset-4"
+            >
+              Dhanvith Ventures
+            </a>
+            , where I work across the stack: real-time data, dashboards, mobile, and the
+            unglamorous plumbing that keeps them running.
+          </p>
+          <p>
+            I lean hard on AI-assisted workflows to move fast, and just as hard on testing and
+            monitoring so that speed doesn't cost reliability.
           </p>
         </div>
       </div>

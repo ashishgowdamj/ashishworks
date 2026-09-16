@@ -20,7 +20,7 @@ interface Experience {
 const About = () => {
   const experiences: Experience[] = [
     {
-      company: 'Dhanvit Ventures LLP',
+      company: 'Dhanvith Ventures LLP',
       type: 'Full-time',
       location: 'Bengaluru, India',
       hybrid: 'On-site',

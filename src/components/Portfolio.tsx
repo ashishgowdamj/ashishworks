@@ -1,129 +1,140 @@
 import React from 'react';
-import { ArrowRight, ExternalLink, FileText } from 'lucide-react';
-import { projects } from '@/lib/projects';
+import { ExternalLink } from 'lucide-react';
+import { projects, type Project } from '@/lib/projects';
 
-const Portfolio = () => {
-  const handleProjectClick = (link?: string) => {
-    if (link) {
-      window.open(link, '_blank', 'noopener,noreferrer');
-    }
-  };
+/**
+ * Shown instead of a photo when there is no truthful screenshot to display.
+ * Deliberately not a stock image — a generic photo of a highway tells a visitor
+ * nothing about the system behind it.
+ */
+const ProjectPlaceholder = ({ project }: { project: Project }) => (
+  <div className="relative w-full h-full min-h-[240px] bg-[#111] border border-gray-800 rounded-xl overflow-hidden flex items-center justify-center">
+    <div
+      className="absolute inset-0 opacity-[0.07]"
+      style={{
+        backgroundImage:
+          'linear-gradient(#f59e0b 1px, transparent 1px), linear-gradient(90deg, #f59e0b 1px, transparent 1px)',
+        backgroundSize: '28px 28px',
+      }}
+    />
+    <div className="relative text-center px-6">
+      <p className="text-amber-400/90 text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+        {project.category}
+      </p>
+      <p className="text-gray-500 text-sm">Internal product — no public screenshot</p>
+    </div>
+  </div>
+);
 
-  // Removed GitHub view button as requested
-
-  const handleDocClick = (doc?: string) => {
-    if (doc) {
-      window.open(doc, '_blank', 'noopener,noreferrer');
-    }
-  };
-
-  const handleStartProjectClick = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
+const ProjectRow = ({ project, index }: { project: Project; index: number }) => {
+  const flipped = index % 2 === 1;
 
   return (
-    <section id="portfolio" className="py-20 bg-[#0b0b0b]">
-      <div className="container mx-auto px-6">
-        {/* Enhanced Header with Staggered Animation */}
-        <div className="text-center mb-12 space-y-3">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">Projects</h2>
-          <p className="text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            My Remarkable Projects
-          </p>
+    <article className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      {/* Visual */}
+      <div className={flipped ? 'lg:order-2' : ''}>
+        {project.image ? (
+          <div className="rounded-xl overflow-hidden border border-gray-800 bg-[#111]">
+            <img
+              src={project.image}
+              alt={`${project.title} interface`}
+              loading="lazy"
+              className="w-full h-auto object-cover object-top"
+            />
+          </div>
+        ) : (
+          <ProjectPlaceholder project={project} />
+        )}
+      </div>
+
+      {/* Story */}
+      <div className={flipped ? 'lg:order-1' : ''}>
+        <div className="flex items-center gap-3 mb-3 text-xs">
+          <span className="text-amber-400 font-semibold tracking-[0.18em] uppercase">
+            {project.category}
+          </span>
+          <span className="text-gray-600">·</span>
+          <span className="text-gray-500">{project.year}</span>
         </div>
 
-        {/* Enhanced Grid with Staggered Card Animations */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative bg-gray-800 rounded-xl overflow-hidden border border-gray-800 hover:border-amber-400/60 transition-colors"
+        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">{project.title}</h3>
+        <p className="text-gray-300 text-base lg:text-lg mb-6 leading-relaxed">{project.tagline}</p>
+
+        {project.metrics && (
+          <div className="grid grid-cols-3 gap-4 mb-6 py-4 border-y border-gray-800">
+            {project.metrics.map((m) => (
+              <div key={m.label}>
+                <p className="text-white font-bold text-lg lg:text-xl leading-tight">{m.value}</p>
+                <p className="text-gray-500 text-xs mt-1">{m.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="space-y-4 mb-6">
+          <div>
+            <p className="text-gray-500 text-xs font-semibold tracking-[0.18em] uppercase mb-2">
+              The problem
+            </p>
+            <p className="text-gray-400 leading-relaxed text-sm lg:text-base">{project.problem}</p>
+          </div>
+          <div>
+            <p className="text-gray-500 text-xs font-semibold tracking-[0.18em] uppercase mb-2">
+              What I built
+            </p>
+            <p className="text-gray-300 leading-relaxed text-sm lg:text-base">
+              {project.contribution}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.tech.map((tech) => (
+            <span
+              key={tech}
+              className="bg-[#111] text-gray-400 px-3 py-1 rounded-md text-xs border border-gray-800"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover object-top"
-                  onError={(e) => {
-                    e.currentTarget.src = `https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop`;
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
-              </div>
-
-              <div className="p-6 relative">
-                <div className="mb-3">
-                  <span className="inline-block bg-amber-400 text-black px-3 py-1 rounded-full text-xs font-semibold">
-                    {project.category}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-300 mb-3 text-sm leading-relaxed line-clamp-2">
-                  {project.description}
-                </p>
-
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-1">
-                    {project.tech.slice(0, 3).map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="bg-gray-900 text-amber-300 px-2 py-1 rounded text-xs border border-gray-800 hover:border-amber-400/60 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 3 && (
-                      <span className="text-gray-500 text-xs px-2 py-1">
-                        +{project.tech.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex gap-2">
-                  {project.link && (
-                    <button 
-                      onClick={() => handleProjectClick(project.link)}
-                      className="flex-1 py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm bg-amber-400 text-black font-semibold hover:bg-amber-300"
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      <span className="relative z-10">View</span>
-                    </button>
-                  )}
-                  {project.doc && (
-                    <button 
-                      onClick={() => handleDocClick(project.doc)}
-                      className="flex-1 py-2 px-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm bg-gray-800 text-white border border-gray-700 hover:border-amber-400"
-                    >
-                      <FileText className="w-4 h-4" />
-                      <span>Details</span>
-                    </button>
-                  )}
-                  {!project.link && !project.doc && (
-                    <span className="inline-flex items-center justify-center px-3 py-2 rounded-lg bg-gray-700 text-gray-400 text-sm cursor-not-allowed flex-1">
-                      Soon
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
+              {tech}
+            </span>
           ))}
         </div>
 
-        {/* Removed CTA card per request */}
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-amber-400 font-semibold hover:text-amber-300 transition-colors"
+          >
+            Visit site
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        )}
       </div>
-    </section>
+    </article>
   );
 };
+
+const Portfolio = () => (
+  <section id="portfolio" className="py-20 bg-[#0b0b0b]">
+    <div className="container mx-auto max-w-6xl px-6">
+      <div className="mb-14 lg:mb-20 max-w-2xl">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          Selected work
+        </h2>
+        <p className="text-gray-400 text-base lg:text-lg leading-relaxed">
+          Production systems I've designed and shipped — real-time tracking, mobile products,
+          internal tooling and the platforms underneath them.
+        </p>
+      </div>
+
+      <div className="space-y-20 lg:space-y-28">
+        {projects.map((project, index) => (
+          <ProjectRow key={project.title} project={project} index={index} />
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Portfolio;
