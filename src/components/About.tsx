@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin } from 'lucide-react';
+import { SectionHeading } from './sections/SectionHeading';
 
 interface Role {
   title: string;
@@ -49,12 +50,12 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-[#0b0b0b]">
       <div className="container mx-auto max-w-6xl px-6">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">About</h2>
-          <p className="text-gray-400 text-base lg:text-lg max-w-3xl mx-auto">
-            Get to know more about my journey, education, and passion for design and development.
-          </p>
-        </div>
+        <SectionHeading
+          index="02"
+          label="Background"
+          title="Where I've worked"
+          description="Two years of internships and full-time work, mostly on products other people depend on to do their job."
+        />
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left Content */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 import { projects, type Project } from '@/lib/projects';
+import { SectionHeading } from './sections/SectionHeading';
 
 /**
  * Shown instead of a photo when there is no truthful screenshot to display.
@@ -118,15 +119,12 @@ const ProjectRow = ({ project, index }: { project: Project; index: number }) => 
 const Portfolio = () => (
   <section id="portfolio" className="py-20 bg-[#0b0b0b]">
     <div className="container mx-auto max-w-6xl px-6">
-      <div className="mb-14 lg:mb-20 max-w-2xl">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-          Selected work
-        </h2>
-        <p className="text-gray-400 text-base lg:text-lg leading-relaxed">
-          Production systems I've designed and shipped — real-time tracking, mobile products,
-          internal tooling and the platforms underneath them.
-        </p>
-      </div>
+      <SectionHeading
+        index="03"
+        label="Work"
+        title="Selected work"
+        description="Production systems I've designed and shipped — real-time tracking, mobile products, internal tooling and the platforms underneath them."
+      />
 
       <div className="space-y-20 lg:space-y-28">
         {projects.map((project, index) => (
