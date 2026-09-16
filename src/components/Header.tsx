@@ -19,7 +19,7 @@ const Header = () => {
     else {
       // For home page sections, use scroll detection
       const handleScroll = () => {
-        const sections = ['home', 'about', 'skills', 'services', 'portfolio'];
+        const sections = ['home', 'about', 'skills', 'portfolio'];
         const scrollPosition = window.scrollY + 100;
 
         for (const section of sections) {
@@ -73,7 +73,6 @@ const Header = () => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
-    { id: 'services', label: 'Services' },
     { id: 'portfolio', label: 'Portfolio' },
     { id: 'stories', label: 'Stories' },
     { id: 'contact', label: 'Contact' },

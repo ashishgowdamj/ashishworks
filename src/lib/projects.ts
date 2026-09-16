@@ -12,6 +12,62 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    title: "Fleet Tracking & Management System",
+    description:
+      "Real-time fleet monitoring platform used to track vehicle activity, visualize operational data, and support management decisions.",
+    tech: ["React", "TypeScript", "MQTT", "Maps Integration"],
+    category: "Web",
+    image:
+      "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=800&h=500&fit=crop&auto=format",
+    features: [
+      "Real-time fleet tracking dashboard",
+      "Analytics visualizations & reporting",
+      "Responsive management workflows",
+    ],
+  },
+  {
+    title: "Offers Unlimited",
+    description:
+      "Cross-platform mobile app that helps users discover deals, offers, and business promotions across multiple locations. Includes admin dashboard for managing promotions and catalogues.",
+    tech: ["React Native", "Supabase", "REST APIs"],
+    category: "Mobile",
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop&auto=format",
+    features: [
+      "Retail offers & promotions aggregator",
+      "Multi-location business discovery",
+      "Admin dashboard with CRUD operations",
+    ],
+  },
+  {
+    title: "Enterprise Analytics Dashboard",
+    description:
+      "Data management and reporting platform used to search, analyze, visualize, and manage large datasets through a unified dashboard.",
+    tech: ["React", "TypeScript", "Node.js", "Express.js", "Tailwind CSS"],
+    category: "Web / Analytics",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop&auto=format",
+    features: [
+      "Search, filtering & reporting capabilities",
+      "SQL-backed data workflows",
+      "Large-scale data visualization",
+    ],
+  },
+  {
+    title: "GPS Simulator App",
+    description:
+      "Android application designed for GPS location simulation and location-based testing. Built with interactive map features and coordinate export.",
+    tech: ["Java", "Android Studio", "Google Maps APIs"],
+    category: "Mobile",
+    image:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&auto=format",
+    features: [
+      "Interactive map plotting & recording",
+      "Coordinate export capabilities",
+      "Real-time coordinate visualization",
+    ],
+  },
+  {
     title: "Advina Solutions",
     description:
       "Modern business website with clean, responsive design and clear service presentation.",
@@ -22,49 +78,13 @@ export const projects: Project[] = [
     link: "https://advina.in/",
   },
   {
-    title: "Dhanvith Ventures",
+    title: "Dhanvit Ventures",
     description:
       "Professional business website featuring modern design, services showcase, and client engagement.",
     tech: ["React", "TypeScript", "Web Design", "Responsive"],
     category: "Web",
     image: "/dhanvith-hero.png",
     features: ["Business Showcase", "Professional Design", "Client Engagement"],
-    link: "https://www.dhanvith-ventures.com",
-  },
-  {
-    title: "EduCompare",
-    description:
-      "Cross‑platform mobile app for iOS and Android built with React Native (Expo). Backend powered by MongoDB.",
-    tech: ["React Native", "Expo", "MongoDB", "iOS", "Android"],
-    category: "Mobile",
-    image:
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&h=500&fit=crop&auto=format",
-    features: ["Cross‑Platform", "Modern UI", "MongoDB Backend"],
-    // Replace with your Google Docs view link (set sharing to "Anyone with link: Viewer")
-    doc: "", 
-  },
-  {
-    title: "Interactive Learning Platform",
-    description:
-      "React app with interactive quizzes, progress tracking, and personalized learning paths.",
-    tech: ["React", "TypeScript", "Local Storage"],
-    category: "Web",
-    image:
-      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&h=500&fit=crop&auto=format",
-    features: ["Quizzes", "Progress Tracking", "Responsive"],
-    link: "https://interactive-learning-platform-nu.vercel.app/",
-    repo: "https://github.com/ashishgowdamj",
-  },
-  {
-    title: "GPS Simulator App",
-    description:
-      "Android app with advanced GPS functionality, location spoofing, and sharing.",
-    tech: ["Android", "Java", "SQLite"],
-    category: "Mobile",
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop&auto=format",
-    features: ["Real-time Tracking", "Location Sharing", "GPS Spoofing"],
-    // Replace with your Google Docs view link
-    doc: "",
+    link: "https://www.dhanvit-ventures.com",
   },
 ];

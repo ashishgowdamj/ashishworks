@@ -1,153 +1,49 @@
-
 import React from 'react';
 
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Design Skills",
+      title: "Frontend Development",
       skills: [
-        { name: "UI/UX Design", level: 90 },
-        { name: "Wireframing", level: 85 },
-        { name: "Prototyping", level: 88 },
-        { name: "Figma", level: 92 },
-        { name: "Typography", level: 80 },
-        { name: "Color Theory", level: 85 },
+        'React',
+        'Next.js',
+        'TypeScript',
+        'Tailwind CSS',
+        'Responsive Design',
+        'UI/UX Principles'
       ]
     },
     {
-      title: "Development Skills",
+      title: "Backend & Mobile Development",
       skills: [
-        { name: "HTML5", level: 95 },
-        { name: "CSS3", level: 90 },
-        { name: "JavaScript", level: 85 },
-        { name: "React.js", level: 80 },
-        { name: "Responsive Design", level: 88 },
-        { name: "Git/GitHub", level: 75 },
+        'Node.js',
+        'Python',
+        'REST APIs',
+        'React Native',
+        'Android Studio',
+        'Firebase'
       ]
     },
     {
-      title: "Mobile Development",
+      title: "Cloud & DevOps",
       skills: [
-        { name: "Android Development", level: 75 },
-        { name: "iOS Development", level: 70 },
-        { name: "React Native", level: 72 },
-        { name: "Flutter", level: 68 },
-        { name: "Mobile UI/UX", level: 80 },
-        { name: "App Store Optimization", level: 65 },
+        'AWS',
+        'Docker',
+        'FastAPI',
+        'CI/CD',
+        'Serverless Architecture',
+        'Cloud Deployment'
       ]
     },
     {
-      title: "Additional Skills",
+      title: "AI & Data Tools",
       skills: [
-        { name: "Accessibility", level: 78 },
-        { name: "User Research", level: 72 },
-        { name: "Flask", level: 70 },
-        { name: "SQLite", level: 68 },
-        { name: "Problem Solving", level: 90 },
-        { name: "Cross-Platform Development", level: 73 },
-      ]
-    }
-  ];
-
-  const toolCategories = [
-    {
-      title: "Design Tools",
-      tools: [
-        { 
-          name: "Figma", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
-          color: "from-purple-500 to-blue-500" 
-        },
-        { 
-          name: "Adobe XD", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-original.svg",
-          color: "from-pink-500 to-purple-500" 
-        },
-        { 
-          name: "Sketch", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg",
-          color: "from-orange-500 to-yellow-500" 
-        },
-      ]
-    },
-    {
-      title: "Development",
-      tools: [
-        { 
-          name: "HTML5", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-          color: "from-orange-500 to-red-500" 
-        },
-        { 
-          name: "CSS3", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-          color: "from-blue-500 to-cyan-500" 
-        },
-        { 
-          name: "JavaScript", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-          color: "from-yellow-500 to-orange-500" 
-        },
-        { 
-          name: "React", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-          color: "from-cyan-500 to-blue-500" 
-        },
-        { 
-          name: "Git", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-          color: "from-gray-500 to-gray-700" 
-        },
-        { 
-          name: "VSCode", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
-          color: "from-blue-600 to-indigo-600" 
-        },
-      ]
-    },
-    {
-      title: "Backend & Database",
-      tools: [
-        { 
-          name: "Flask", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",
-          color: "from-green-500 to-teal-500" 
-        },
-        { 
-          name: "SQLite", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
-          color: "from-gray-600 to-gray-800" 
-        },
-        { 
-          name: "Node.js", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-          color: "from-green-400 to-emerald-500" 
-        },
-      ]
-    },
-    {
-      title: "Mobile Development",
-      tools: [
-        { 
-          name: "Android Studio", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg",
-          color: "from-green-400 to-teal-500" 
-        },
-        { 
-          name: "Xcode", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xcode/xcode-original.svg",
-          color: "from-blue-400 to-indigo-500" 
-        },
-        { 
-          name: "React Native", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-          color: "from-cyan-400 to-blue-500" 
-        },
-        { 
-          name: "Flutter", 
-          logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
-          color: "from-blue-500 to-cyan-400" 
-        },
+        'LangChain',
+        'Claude AI',
+        'OpenAI API',
+        'Data Visualization',
+        'Analytics Dashboards',
+        'Machine Learning Basics'
       ]
     }
   ];
@@ -160,21 +56,42 @@ const Skills = () => {
             Skills & <span className="text-amber-400">Expertise</span>
           </h2>
           <p className="text-gray-400 text-base lg:text-lg max-w-3xl mx-auto">
-            The core design and development skills I use to ship quality work.
+            The core technologies and tools I use to ship quality work.
           </p>
         </div>
-        {/* Simple Skills list (clean and compact) */}
+
+        {/* Skills from Resume */}
+        <div className="max-w-4xl mx-auto space-y-10">
+          {skillCategories.map((category, catIdx) => (
+            <div key={catIdx}>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="w-8 h-0.5 bg-amber-400 inline-block"></span>
+                {category.title}
+              </h3>
+              <ul className="grid md:grid-cols-2 gap-x-6 gap-y-3">
+                {category.skills.map((skill, i) => (
+                  <li key={i} className="flex items-start gap-3 text-white">
+                    <span className="mt-1.5 w-2 h-2 rounded-full bg-amber-400 flex-shrink-0"></span>
+                    <span className="text-sm md:text-base">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Stack logos */}
         <div className="mb-16 max-w-4xl mx-auto">
           <ul className="grid grid-cols-1 md:grid-cols-2 justify-center gap-y-3 md:gap-y-4 gap-x-12">
             {[
               'User Research',
               'Interaction Design',
-              'Web Design',
               'Web Development',
-              'Wireframing/Prototyping',
-              'Responsive Web Design',
-              'App Development',
-              'Visual Design',
+              'AI Integration',
+              'Cloud Architecture',
+              'REST API Design',
+              'Mobile Development',
+              'UI/UX Design',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-white">
                 <span className="mt-2 w-2 h-2 rounded-full bg-amber-400"></span>
@@ -184,21 +101,21 @@ const Skills = () => {
           </ul>
         </div>
 
-        {/* Stack: icon-only, minimal, centered (referenced, not copied) */}
+        {/* Icon-only grid */}
         <div>
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-y-8 gap-x-6 place-items-center">
               {[
                 { name: 'React / Native', logo: 'https://cdn.simpleicons.org/react/61DAFB' },
                 { name: 'Next.js', logo: 'https://cdn.simpleicons.org/nextdotjs/FFFFFF' },
-                { name: 'JavaScript', logo: 'https://cdn.simpleicons.org/javascript/F7DF1E' },
-                { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/339933' },
                 { name: 'Python', logo: 'https://cdn.simpleicons.org/python/3776AB' },
+                { name: 'Node.js', logo: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+                { name: 'AWS', logo: 'https://cdn.simpleicons.org/amazonaws/232F3E' },
+                { name: 'Docker', logo: 'https://cdn.simpleicons.org/docker/2496ED' },
+                { name: 'FastAPI', logo: 'https://cdn.simpleicons.org/fastapi/009688' },
                 { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-                { name: 'Framer', logo: 'https://cdn.simpleicons.org/framer/0055FF' },
-                { name: 'Flutter', logo: 'https://cdn.simpleicons.org/flutter/02569B' },
-                { name: 'GitHub', logo: 'https://cdn.simpleicons.org/github/FFFFFF' },
-                { name: 'Expo Go', logo: 'https://cdn.simpleicons.org/expo/FFFFFF' },
+                { name: 'LangChain', logo: 'https://cdn.simpleicons.org/langchain/1C3C3C' },
+                { name: 'Firebase', logo: 'https://cdn.simpleicons.org/firebase/FFCA28' },
               ].map((tool) => (
                 <div key={tool.name} className="flex flex-col items-center">
                   <img
@@ -219,7 +136,7 @@ const Skills = () => {
             </div>
           </div>
         </div>
-        
+
       </div>
     </section>
   );
