@@ -12,7 +12,7 @@ export const profile = {
   github: "https://github.com/ashishgowdamj",
   linkedin: "https://linkedin.com/in/ashishgowdamj",
   agency: "https://vortex-lane.vercel.app",
-  resumePath: "/Ashish Gowda MJ Resume.pdf",
+  resumePath: "/Ashish-Gowda-MJ-Resume.pdf",
   available: true,
 };
 

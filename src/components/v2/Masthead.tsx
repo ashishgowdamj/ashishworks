@@ -42,7 +42,7 @@ const TopBar = () => (
       )}
       <a
         href={profile.resumePath}
-        download
+        download="Ashish_Gowda_MJ_Resume.pdf"
         className="v2-mono text-[11px] px-2 py-1 rounded transition-colors flex items-center gap-1.5"
         style={{ backgroundColor: 'rgba(255,255,255,0.06)', color: 'var(--v2-text)' }}
       >
