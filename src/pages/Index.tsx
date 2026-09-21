@@ -1,27 +1,36 @@
-
 import React from 'react';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Services from '@/components/Services';
-import Portfolio from '@/components/Portfolio';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import BottomNav from '@/components/BottomNav';
+import { Column } from '@/components/v2/primitives';
+import { TopBar, Hero, Links } from '@/components/v2/Masthead';
+import WorkList from '@/components/v2/WorkList';
+import {
+  NowPanel,
+  ExperiencePanel,
+  StackPanel,
+  ProcessPanel,
+  ServicesPanel,
+  FaqPanel,
+  EducationPanel,
+} from '@/components/v2/Panels';
+import { ContactPanel, FooterBar } from '@/components/v2/Closing';
 
-const Index = () => {
-  return (
-    <div className="min-h-screen bg-[#0b0b0b] pb-2">
+const Index = () => (
+  <div className="v2-root">
+    <Column>
+      <TopBar />
       <Hero />
-      <About />
-      <Skills />
-      <Services />
-      <Portfolio />
-      <Contact />
-      <Footer />
-      <BottomNav />
-    </div>
-  );
-};
+      <Links />
+      <WorkList />
+      <NowPanel />
+      <ExperiencePanel />
+      <StackPanel />
+      <ProcessPanel />
+      <ServicesPanel />
+      <FaqPanel />
+      <EducationPanel />
+      <ContactPanel />
+      <FooterBar />
+    </Column>
+  </div>
+);
 
 export default Index;
